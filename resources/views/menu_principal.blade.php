@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-white border-b border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-white">
+    <nav class="bg-white border-b border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-white fixed w-full z-20">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             {{-- logo centrado movile --}}
             <div class="flex justify-between w-full  lg:hidden">
