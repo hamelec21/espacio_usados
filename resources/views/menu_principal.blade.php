@@ -27,18 +27,18 @@
                {{-- logo pc --}}
             <a href="https://flowbite.com" class="flex items-center invisible -mt-4 md:lg:visible lg:visible">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9 " alt="Flowbite Logo" />
-                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-gray-700">Flowbite</span>
+                <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-gray-700">Estacios Usados</span>
             </a>
 
             <div class="flex items-center lg:order-2">
 
 
-                <a href="#"
+                <a href="/register"
                     class=" bg-sky-600 text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4  lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-orange-500 focus:outline-none dark:focus:ring-gray-800">
                     Crear Cuenta
                 </a>
 
-                <a href="#"
+                <a href="/login"
                     class=" bg-orange-600 text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-orange-500 focus:outline-none dark:focus:ring-gray-800">Ingresar
                 </a>
                 <a href="#" class="flex items-center">
