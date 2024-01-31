@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_estrega', function (Blueprint $table) {
+        Schema::create('modelos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('marcas_id');
+            $table->foreign('marcas_id')->references('id')->on('marcas')
+            ->onDelete('no action')
+            ->onUpdate('no action');
             $table->string('nombre');
             $table->timestamps();
         });
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_estrega');
+        Schema::dropIfExists('modelos');
     }
 };
