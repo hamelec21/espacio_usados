@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/detalle_producto', function () {
+    return view('/detalle_producto');
+});
+
+Route::get('/favorito', function () {
+    return view('/favorito');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
