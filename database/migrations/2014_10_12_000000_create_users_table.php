@@ -13,7 +13,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('rut');
             $table->string('name');
+            $table->string('apeterno');
+            $table->string('amaterno');
+            $table->string('direccion');
+            $table->unsignedBigInteger('regiones_id');
+            $table->foreign('regiones_id')->references('id')->on('regiones')
+            ->onDelete('no action')
+            ->onUpdate('no action');
+
+            $table->unsignedBigInteger('comunas_id');
+            $table->foreign('comunas_id')->references('id')->on('comunas')
+            ->onDelete('no action')
+            ->onUpdate('no action');
+
+            $table->unsignedBigInteger('estados_usuarios_id');
+            $table->foreign('estados_usuarios_id')->references('id')->on('estado_usuarios')
+            ->onDelete('no action')
+            ->onUpdate('no action');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
