@@ -26,3 +26,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/registro', \App\Livewire\Registro::class)->name('registro');
