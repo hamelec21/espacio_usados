@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('comunas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
             $table->unsignedBigInteger('regiones_id');
-            $table->foreign('regiones_id')->references('id')->on('comunas')
+            $table->foreign('regiones_id')->references('id')->on('regiones')
             ->onDelete('no action')
             ->onUpdate('no action');
-            $table->string('nombre');
             $table->timestamps();
         });
     }

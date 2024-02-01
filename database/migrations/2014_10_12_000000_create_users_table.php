@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('apeterno');
             $table->string('amaterno');
             $table->string('direccion');
+
             $table->unsignedBigInteger('regiones_id');
             $table->foreign('regiones_id')->references('id')->on('regiones')
             ->onDelete('no action')

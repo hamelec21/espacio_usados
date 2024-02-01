@@ -17,8 +17,18 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
+
+     public $fer="hola";
+
+
+
+
+
     public function create(array $input): User
     {
+
+        
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -27,7 +37,15 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return User::create([
+            'rut' => $input['rut'],
             'name' => $input['name'],
+            'apaterno' => $input['apaterno'],
+            'amaterno' => $input['amaterno'],
+            'direccion' => $input['direccion'],
+            'regiones_id' => $input['regiones_id'],
+            'comunas_id' => $input['comunas_id'],
+            'estado_usuarios_id' => $input['estado_usuarios_id'],
+
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
