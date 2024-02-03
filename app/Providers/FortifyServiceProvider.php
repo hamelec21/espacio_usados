@@ -6,11 +6,15 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Models\User;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
+
 use Illuminate\Support\Str;
+use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -20,8 +24,26 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                $user = User::where('email', $request->email)->first();
+                if ($user && Hash::check($request->password, $user->password)) {
+                    if ($user->hasRole('vendedor')) {
+                        return redirect('dashboard-vendedor');
+                    } elseif ($user->hasRole('comprador')) {
+                        return redirect('dashboard-comprador');
+                    } elseif ($user->hasRole('administrador')) {
+                        return redirect('dashboard-administrador');
+                    }
+                }
+
+                // Si no se cumple ninguna de las condiciones anteriores, redirige a la página de inicio de sesión
+                return redirect('/login');
+            }
+        });
     }
+
 
     /**
      * Bootstrap any application services.

@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://cdn.jsdelivr.net/npm/bundle-js@1.0.3/bundler.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" /> <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -41,6 +42,90 @@
     <script src="{{ asset('src/dark-mode.js') }}"></script>
     <script src="{{ asset('src/index.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        Livewire.on('insert', function(message) {
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Registro Creado Exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+    </script>
+    <!--mensajes para editar-->
+    <script>
+        Livewire.on('editar', function(message) {
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'info',
+                title: 'Registro Actualizado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        })
+    </script>
+    <!--mensajes para Eliminar-->
+    <script>
+        Livewire.on('borrar', function(message) {
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'warning',
+                title: 'Registro Eliminado',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        })
+    </script>
+
+<script>
+Livewire.on('error401', function(message) {
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Código 401 No autorizado',
+        showConfirmButton: false,
+        timer: 2500
+    })
+
+})
+</script>
+
+
+<script>
+Livewire.on('error400', function(message) {
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Código 400 Solicitud incorrecta',
+        showConfirmButton: false,
+        timer: 2500
+    })
+
+})
+</script>
+
+
+<script>
+Livewire.on('bloqueado', function(message) {
+
+    Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'El Ticket ha Sido Bloqueado',
+        showConfirmButton: false,
+        timer: 2000
+    })
+
+})
+</script>
+
 </body>
 
 </html>

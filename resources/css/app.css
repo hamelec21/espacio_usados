@@ -1,16 +1,6 @@
 @tailwind base;
 @tailwind components;
- /*botones de acciones*/
 
- .btn-eliminar {
-    @apply  bg-red-600 hover:bg-red-500  text-white py-2 px-4 rounded-xl shadow-lg cursor-pointer;
-}
-.btn-editar {
-    @apply  bg-amber-500 hover:bg-amber-400  text-white py-2 px-4 rounded-xl shadow-lg cursor-pointer ;
-}
-.btn-agregar{
-    @apply  bg-gradient-to-r from-sky-600 to-cyan-400 font-bold text-white py-2 px-4 rounded-xl shadow-lg cursor-pointer;
-}
 
 .card-categoria{
      background-image:linear-gradient(45deg, #000000da, #3838382a 100%), url("/public/images/products/img-11.png");
@@ -138,7 +128,7 @@
     @apply text-lg text-gray-900 font-semibold !important;
   }
 
-  
+
 
   .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
     @apply mx-2 !important;
@@ -182,6 +172,26 @@
       height: calc(100vh - 4rem);
     }
   }
+
+  /*
+|--------------------------------------------------------------------------
+| Botones de acciones
+|--------------------------------------------------------------------------
+*/
+
+.btn-eliminar {
+    @apply focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900;
+}
+.btn-editar {
+    @apply  focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-1 me-2 mb-2 dark:focus:ring-yellow-900;
+}
+.btn-agregar{
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800;
+}
+.btn-cancelar{
+    @apply px-2 py-1 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700;
+}
+
 
 @tailwind utilities;
 

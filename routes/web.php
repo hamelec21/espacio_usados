@@ -35,24 +35,21 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
-Route::get('/registro', \App\Livewire\Registro::class)->name('registro');
-
-
 /*
 |--------------------------------------------------------------------------
-|                    Grupos de Rutas  roles permisos
+|                   Rutas del  Modulo de seguridad
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+Route::get('/panel/seguridad/show-role',App\Livewire\Panel\Seguridad\Rol\ShowRole::class)->name('show-role');
+Route::get('/panel/seguridad/crer-role',App\Livewire\Panel\Seguridad\Rol\CrearRole::class)->name('crear-role');
+Route::get('/panel/seguridad/editar-role/{id}',App\Livewire\Panel\Seguridad\Rol\EditarRole::class)->name('editar-role');
 
-    Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
-    Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
-    Route::resource('permissions', App\Http\Controllers\PermissionController::class);
-    Route::resource('roles', App\Http\Controllers\RoleController::class);
+//rutas de permisos
+Route::get('/panel/seguridad/permiso/show-permisos',App\Livewire\Panel\Seguridad\Permiso\ShowPermisos::class)->name('show-permisos');
+Route::get('/panel/seguridad/permiso/crear-permiso',App\Livewire\Panel\Seguridad\Permiso\CrearPermiso::class)->name('crear-permiso');
+Route::get('/panel/seguridad/permiso/editar-permiso/{id}',App\Livewire\Panel\Seguridad\Permiso\EditarPermiso::class)->name('editar-permiso');
+//rutas de permisos
+Route::get('/panel/seguridad/usuario/show-usuario',App\Livewire\Panel\Seguridad\Usuario\ShowUsuario::class)->name('show-usuario');
+Route::get('/panel/seguridad/usuario/editar-usuario/{id}',App\Livewire\Panel\Seguridad\Usuario\EditarUsuario::class)->name('editar-usuario');
 });

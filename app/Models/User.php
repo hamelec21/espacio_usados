@@ -68,4 +68,31 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function scopeBuscar($query, $buscar)
+     {
+         if ($buscar === '') {
+             return;
+         }
+         return $query->where('name', 'like', '%' . $buscar . '%');
+     }
+
+     public function scopeEstados($query1, $estados)
+     {
+         if ($estados === '') {
+             return;
+         }
+         return $query1->where('estados_usuarios_id', 'like', '%' . $estados . '%');
+     }
+
+     //relaciones
+      public function status_usuario()
+      {
+        return $this->belongsTo(status_usuario::class,'estados_usuarios_id');
+      }
+
+
+
+
+
 }

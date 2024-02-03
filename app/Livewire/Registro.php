@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Livewire;
-
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+
+use Laravel\Jetstream\Jetstream;
 use Livewire\Component;
 
 class Registro extends Component
@@ -21,6 +23,7 @@ class Registro extends Component
             'apellidos' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            
         ]);
 
         $user = User::create([
@@ -28,14 +31,14 @@ class Registro extends Component
             'name' => $this->name,
             'apellidos' => $this->apellidos,
             'email' => $this->email,
-            'usuario_status_id' => 1,
+            'estados_usuarios_id' => 1,
             'password' => Hash::make($this->password),
         ]);
 
         //   $user->assignRole('SOCIO'); // Asignar el rol "publico"
-      //  $user->roles()->sync('2');
+             $user->roles()->sync('2');
         // Puedes redirigir a una página de inicio de sesión u otra después del registro
-        // return redirect('/login');
+        return redirect('/login');
 
         // Redireccionar al dashboard socio
       //  return redirect()->route('socio.home');
