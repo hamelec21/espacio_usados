@@ -1,7 +1,5 @@
 <div>
-    @include('header')
-    <!--sidebar-->
-    @include('sidebar')
+    @include('sidebar-administrador')
     <!--contenido-->
     <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] mt-16">
         <div class="mt-20 mb-10">

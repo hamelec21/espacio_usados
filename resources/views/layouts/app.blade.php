@@ -42,6 +42,9 @@
     <script src="{{ asset('src/dark-mode.js') }}"></script>
     <script src="{{ asset('src/index.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/svelte@4.2.10/src/runtime/index.min.js
+"></script>
     <script>
         Livewire.on('insert', function(message) {
 
