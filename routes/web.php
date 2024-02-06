@@ -25,6 +25,18 @@ Route::get('/favorito', function () {
     return view('/favorito');
 });
 
+//modificar la ruta
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/perfil-usuario', function () {
+        return view('perfil-usuario');
+    })->name('perfil-usuario');
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -34,6 +46,28 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard-usuario', function () {
+        return view('dashboard-usuario');
+    })->name('dashboard-usuario');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+|                   Rutas del  Modulo de usuario
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/usuario/perfil/editar',App\Livewire\Usuario\Perfil\Editar::class)->name('editar');
+
+    });
 
 /*
 |--------------------------------------------------------------------------

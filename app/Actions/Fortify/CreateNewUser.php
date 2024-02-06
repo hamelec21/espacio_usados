@@ -1,14 +1,11 @@
 <?php
 
 namespace App\Actions\Fortify;
-use Illuminate\Http\Request;
-use App\Models\Region;
-use App\Models\Comuna;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Spatie\Permission\Traits\HasRoles;
+
 use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
@@ -43,9 +40,6 @@ class CreateNewUser implements CreatesNewUsers
 
             // Devolver el usuario creado
              return $user;
-
-
-
 
     }
 }

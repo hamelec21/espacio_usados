@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\CreateComprador;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
@@ -29,15 +30,12 @@ class FortifyServiceProvider extends ServiceProvider
             {
                 $user = User::where('email', $request->email)->first();
                 if ($user && Hash::check($request->password, $user->password)) {
-                    if ($user->hasRole('vendedor')) {
-                        return redirect('dashboard-vendedor');
-                    } elseif ($user->hasRole('comprador')) {
-                        return redirect('dashboard-comprador');
-                    } elseif ($user->hasRole('administrador')) {
-                        return redirect('dashboard-administrador');
+                    if ($user->hasRole(1)) {
+                        return redirect('dashboard');
+                    } elseif ($user->hasRole(2)) {
+                        return redirect('dashboard-usuario');
                     }
                 }
-
                 // Si no se cumple ninguna de las condiciones anteriores, redirige a la página de inicio de sesión
                 return redirect('/login');
             }
@@ -63,6 +61,14 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
+
+
         });
+
+
+
+
+
+
     }
 }
