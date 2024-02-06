@@ -66,6 +66,7 @@ Route::middleware([
 */
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/usuario/perfil/editar',App\Livewire\Usuario\Perfil\Editar::class)->name('editar');
+    Route::get('/usuario/productos/show-productos',App\Livewire\Usuario\Productos\ShowProductos::class)->name('show-productos');
 
     });
 
