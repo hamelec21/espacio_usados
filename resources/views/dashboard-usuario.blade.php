@@ -45,16 +45,15 @@
                             <path d="M10.5 14.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
                         </svg>
 
-                        <a href="#">
+                        <a href="{{ route('show-usuario') }}">
                             <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Deseas
                                 Vender?</h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit, amet
                             consectetur adipisicing elit.</p>
-
-                        <button class="bg-green-700 hover:bg-green-800 px-4 py-1  text-white rounded-md">
+                        <a href="{{ route('show-productos') }}" class="bg-green-700 hover:bg-green-800 px-4 py-1 text-white rounded-md">
                             ¡Sí, quiero vender!
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
