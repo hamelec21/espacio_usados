@@ -4,9 +4,10 @@ namespace App\Livewire\Panel\Config\EstadoUsuario;
 
 use App\Models\EstadoUsuario;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 class ShowEstadoUsuario extends Component
 {
+    use WithPagination;
     public $search;
 
     public function updatingSearch()
