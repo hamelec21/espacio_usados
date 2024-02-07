@@ -6,7 +6,8 @@ use App\Models\EstadoPublicacion;
 use Livewire\Component;
 use Livewire\WithPagination;
 class ShowEstadoPublicacion extends Component
-{use WithPagination;
+{
+    use WithPagination;
     public $search;
 
     public function updatingSearch()
