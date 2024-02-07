@@ -54,7 +54,7 @@
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
-                                        <span>{{ $modelo->marcas_id }}</span>
+                                        <span>{{ $modelo->marca->nombre }}</span>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <span>{{ $modelo->nombre }}</span>

@@ -17,4 +17,18 @@ class Modelo extends Model
          }
          return $query->where('nombre', 'like', '%' . $buscar . '%');
      }
+
+/**
+ * *relaciones
+ */
+
+ public function modelos()
+    {
+        return $this->hasMany(Modelo::class,'id');
+    }
+
+    public function marca()
+    {
+        return $this->belongsTo(Marca::class, 'marcas_id', 'id');
+    }
 }

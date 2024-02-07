@@ -11,10 +11,25 @@ class Marca extends Model
     protected $table = 'marcas';
     protected $fillable = ['nombre'];
     public function scopeBuscar($query, $buscar)
-     {
-         if ($buscar === '') {
-             return;
-         }
-         return $query->where('nombre', 'like', '%' . $buscar . '%');
-     }
+    {
+        if ($buscar === '') {
+            return;
+        }
+        return $query->where('nombre', 'like', '%' . $buscar . '%');
+    }
+
+    /**
+ * *relaciones
+ */
+
+ public function modelos()
+    {
+        return $this->hasMany(Modelo::class, 'marcas_id', 'id');
+    }
+
+
+
+
+
+
 }
