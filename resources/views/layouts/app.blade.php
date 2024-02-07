@@ -25,7 +25,7 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div class="min-h-screen bg-white dark:bg-gray-800">
+    <div class="min-h-screen bg-gray-50 dark:bg-gray-800">
 
 
         <!-- Page Content -->
@@ -42,9 +42,6 @@
     <script src="{{ asset('src/dark-mode.js') }}"></script>
     <script src="{{ asset('src/index.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <script src="
-https://cdn.jsdelivr.net/npm/svelte@4.2.10/src/runtime/index.min.js
-"></script>
     <script>
         Livewire.on('insert', function(message) {
 
