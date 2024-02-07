@@ -90,14 +90,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('panel/config/estado-producto/show-estado-producto', App\Livewire\Panel\Config\EstadoProducto\ShowEstadoProducto::class)->name('show-estado-producto');
     Route::get('panel/config/estado-producto/crear-estado-producto', App\Livewire\Panel\Config\EstadoProducto\CrearEstadoProducto::class)->name('crear-estado-producto');
     Route::get('panel/config/estado-producto/editar-estado-producto/{id}', App\Livewire\Panel\Config\EstadoProducto\EditarEstadoProducto::class)->name('editar-estado-producto');
-    /* ruta para las Estados Productos */
+    /* ruta para las Estados publicacion */
     Route::get('panel/config/estado-publicacion/show-estado-publicacion', App\Livewire\Panel\Config\EstadoPublicacion\ShowEstadoPublicacion::class)->name('show-estado-publicacion');
     Route::get('panel/config/estado-publicacion/crear-estado-publicacion', App\Livewire\Panel\Config\EstadoPublicacion\CrearEstadoPublicacion::class)->name('crear-estado-publicacion');
     Route::get('panel/config/estado-publicacion/editar-estado-publicacion/{id}', App\Livewire\Panel\Config\EstadoPublicacion\EditarEstadoPublicacion::class)->name('editar-estado-publicacion');
     /* ruta para las Estados de usuario */
     Route::get('panel/config/estado-usuario/show-estado-usuario', App\Livewire\Panel\Config\EstadoUsuario\ShowEstadoUsuario::class)->name('show-estado-usuario');
     Route::get('panel/config/estado-usuario/crear-estado-usuario', App\Livewire\Panel\Config\EstadoUsuario\CrearEstadoUsuario::class)->name('crear-estado-usuario');
-    Route::get('panel/config/estado-usuario/editar-estado-usuario', App\Livewire\Panel\Config\EstadoUsuario\EditarEstadoUsuario::class)->name('editar-estado-usuario');
+    Route::get('panel/config/estado-usuario/editar-estado-usuario/{id}', App\Livewire\Panel\Config\EstadoUsuario\EditarEstadoUsuario::class)->name('editar-estado-usuario');
     /* ruta para las Marcas */
     Route::get('panel/config/marcas/show-marcas', App\Livewire\Panel\Config\Marcas\ShowMarcas::class)->name('show-marcas');
     Route::get('panel/config/marcas/crear-marca', App\Livewire\Panel\Config\Marcas\CrearMarca::class)->name('crear-marca');
