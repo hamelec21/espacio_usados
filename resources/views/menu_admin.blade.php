@@ -333,31 +333,23 @@
                 <li class="dropdown">
                     <button id="navPagesLink" data-dropdown-toggle="navPages"
                         class="dropdown-toggle flex w-full items-center border-b border-gray-800 py-2 px-3 font-medium md:border-0 md:p-0">
-                        <i class="ti ti-file-diff mr-1 pb-1 text-lg"></i> Pages
+                        <i class="ti ti-file-diff mr-1 pb-1 text-lg"></i>Seguridad
                         <i class="ti ti-chevron-down ml-auto lg:ml-1"></i>
                     </button>
-                    <!-- Dropdown menu -->
+                    <!-- Dropdown Seguridad -->
                     <div id="navPages"
                         class="dropdown-menu z-10 my-1 hidden w-full list-none divide-y divide-gray-100 rounded bg-gray-800 md:bg-white text-base shadow dark:divide-gray-600 border border-slate-700 md:border-white dark:border-slate-700/50 dark:bg-gray-900 md:w-44 dropdown-menu">
                         <ul class="py-1">
                             <li>
-                                <a href="starter.html" class="nav-link  dark:hover:bg-slate-800/70">Starter</a>
+                                <a href="{{ route('show-role') }}" class="nav-link  dark:hover:bg-slate-800/70">Rol</a>
                             </li>
                             <li>
-                                <a href="profile.html" class="nav-link  dark:hover:bg-slate-800/70">Profile</a>
+                                <a href="{{ route('show-permisos') }}" class="nav-link  dark:hover:bg-slate-800/70">Permisos</a>
                             </li>
                             <li>
-                                <a href="timeline.html" class="nav-link  dark:hover:bg-slate-800/70">Timeline</a>
+                                <a href="{{ route('show-usuario') }}" class="nav-link  dark:hover:bg-slate-800/70">Usuarios</a>
                             </li>
-                            <li>
-                                <a href="pricing.html" class="nav-link  dark:hover:bg-slate-800/70">Pricing</a>
-                            </li>
-                            <li>
-                                <a href="blogs.html" class="nav-link  dark:hover:bg-slate-800/70">Blogs</a>
-                            </li>
-                            <li>
-                                <a href="faqs.html" class="nav-link  dark:hover:bg-slate-800/70">FAQs</a>
-                            </li>
+                           
                         </ul>
                     </div>
                 </li>
@@ -368,7 +360,7 @@
                         <i class="ti ti-shield-lock mr-1 pb-1 text-lg"></i> Configuracion
                         <i class="ti ti-chevron-down ml-auto lg:ml-1"></i>
                     </button>
-                    <!-- Dropdown menu -->
+                    <!-- Dropdown menu configuracion -->
                     <div id="navAuth"
                         class="dropdown-menu z-10 my-1 hidden w-full list-none divide-y divide-gray-100 rounded bg-gray-800 md:bg-white text-base shadow dark:divide-gray-600 border border-slate-700 md:border-white dark:border-slate-700/50 dark:bg-gray-900 md:w-44 dropdown-menu">
                         <ul class="py-1">
@@ -488,43 +480,52 @@
                     </ul>
                 </div>
             </div>
-
+                <!--seccion usuario-->
             <div class="mr-2 lg:mr-0 dropdown relative">
                 <button type="button"
                     class="dropdown-toggle flex items-center rounded-full text-sm focus:bg-none focus:ring-0 dark:focus:ring-0 md:mr-0"
                     id="user-profile" aria-expanded="false" data-dropdown-toggle="navUserdata">
-                    <img class="h-8 w-8 rounded-full" src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user photo" />
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <div class="shrink-0 me-3">
+                        <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    </div>
+                @endif
                     <span class="ml-2 hidden text-left xl:block">
-                        <span class="block font-medium text-gray-400">Maria Gibson</span>
-                        <span class="-mt-1 block text-sm font-medium text-gray-500">Admin</span>
+                        <span class="block font-medium text-gray-400">{{ auth()->user()->name }}</span>
                     </span>
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-right z-50 my-1 hidden list-none divide-y divide-gray-100 rounded border-slate-700 md:border-white text-base shadow dark:divide-gray-600 bg-white dark:bg-slate-800"
                     id="navUserdata">
                     <div class="py-3 px-4">
-                        <span class="block text-sm font-medium text-gray-900 dark:text-white">Bonnie Green</span>
+                        <span class="block text-sm font-medium text-gray-900 dark:text-white">{{ auth()->user()->apaterno }} {{ auth()->user()->amaterno }}</span>
                         <span
-                            class="block truncate text-sm font-normal text-gray-500 dark:text-gray-400">name@flowbite.com</span>
+                            class="block truncate text-sm font-normal text-gray-500 dark:text-gray-400">{{ auth()->user()->email }}</span>
                     </div>
                     <ul class="py-1" aria-labelledby="navUserdata">
                         <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white">Dashboard</a>
+                            <a href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')"
+                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white">Perfil</a>
                         </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-900/20 dark:hover:text-white">Sign
-                                out</a>
-                        </li>
+
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <div class="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
+                                <button class="px-4 py-3 flex items-center space-x-4 rounded-md text-red-600 group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                    </svg>
+                                    <span class="group-hover:text-red-700">Salir</span>
+                                </button>
+
+                                <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+
+                                </x-dropdown-link>
+
+                            </div>
+                        </form>
                     </ul>
                 </div>
             </div>

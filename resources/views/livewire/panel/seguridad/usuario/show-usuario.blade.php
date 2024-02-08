@@ -1,8 +1,8 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
-    <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] mt-16">
-        <div class="mt-20 mb-10">
+    <div class="container mx-auto px-4">
+        <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Usuarios del Sistema</h1>
         </div>
         <div class="overflow-x-auto">
@@ -81,14 +81,17 @@
 
                                                 <div>
                                                     @if ($usuario->estados_usuarios_id == '1')
-                                                    <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{{ $usuario->status_usuario->nombre }}</span>
-                                                @elseif($usuario->estados_usuarios_id == '2')
-                                                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">{{ $usuario->status_usuario->nombre }}</span>
-                                                @elseif($usuario->estados_usuarios_id == '3')
-                                                    <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">{{ $usuario->status_usuario->nombre }}</span>
-                                                @else
-                                                    <span class="text-gray-500">No Se Registra Estado</span>
-                                                @endif
+                                                        <span
+                                                            class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{{ $usuario->status_usuario->nombre }}</span>
+                                                    @elseif($usuario->estados_usuarios_id == '2')
+                                                        <span
+                                                            class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">{{ $usuario->status_usuario->nombre }}</span>
+                                                    @elseif($usuario->estados_usuarios_id == '3')
+                                                        <span
+                                                            class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">{{ $usuario->status_usuario->nombre }}</span>
+                                                    @else
+                                                        <span class="text-gray-500">No Se Registra Estado</span>
+                                                    @endif
 
                                                 </div>
                                             </td>
