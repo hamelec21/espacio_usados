@@ -1,7 +1,7 @@
 <nav class="border-gray-200 bg-gray-900 px-2.5 py-2.5 shadow-sm dark:bg-slate-800 sm:px-4 block print:hidden">
     <div class="container mx-0 flex max-w-full flex-wrap items-center lg:mx-auto">
         <div class="flex items-center">
-            <a href="#" class="flex items-center outline-none">
+            <a href="/dashboard" class="flex items-center outline-none">
                 <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" class="h-6" />
                 <img src="{{ asset('assets/images/logo.png') }}" alt="" class="ml-2 hidden xl:block mt-1" />
             </a>
