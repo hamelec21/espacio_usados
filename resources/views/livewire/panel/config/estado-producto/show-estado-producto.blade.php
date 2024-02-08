@@ -1,8 +1,8 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
     <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] p-5">
-        <div class="mt-20 mb-10">
+        <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Estado del Producto</h1>
         </div>
         <div class="overflow-x-auto">
@@ -28,7 +28,7 @@
                                         placeholder="Buscar Estado Producto">
                                 </div>
                                 <a href="{{ route('crear-estado-producto') }}">
-                                    <button class="btn-agregar ">Crear Nuevo Estado Producto</button>
+                                    <button class="btn-agregar ">Crear Estado Producto</button>
                                 </a>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Id</th>
-                                    <th class="py-3 px-6 text-left">Tipo Entrega</th>
+                                    <th class="py-3 px-6 text-left">Estado</th>
                                     <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -64,7 +64,7 @@
                                                 <button class="btn-editar mb-1">Editar</button>
                                             </div>
                                             <div class="mt-1 px-3">
-                                                <a onclick="confirm('¿Estas Seguro de Eliminar EL Producto?')||event.stopImmediatePropagation()"
+                                                <a onclick="confirm('¿Estas Seguro de Eliminar?')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $estadoproducto->id }})"><button
                                                         class="btn btn-eliminar">Eliminar</button> </a>
                                             </div>

@@ -1,5 +1,5 @@
 <x-app-layout>
-@include('sidebar-administrador')
+@include('menu_admin')
    <!--sidebar-->
 
    <!--contenido-->

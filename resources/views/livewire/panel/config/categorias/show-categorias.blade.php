@@ -1,15 +1,15 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
-    <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] p-5">
-        <div class="mt-20 mb-10">
-            <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Permisos de Usuarios</h1>
+    <div class="container mx-auto">
+        <div class="mt-10 mb-10">
+            <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200 uppercase">Categorias</h1>
         </div>
         <div class="overflow-x-auto">
             <div class="flex items-center justify-center  font-sans overflow-hidden">
                 <div class="w-full lg:w-5/6">
                     {{-- seccion filtro o busqueda --}}
-                    <div class="container">
+                    <div class="container mx-auto px-4">
                         <div class="shadow-md sm:rounded-lg border-gray-200 border">
                             <div
                                 class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-white dark:bg-gray-900 px-4">
@@ -28,15 +28,15 @@
                                         placeholder="Buscar Categoria">
                                 </div>
                                 <a href="{{ route('crear-categoria') }}">
-                                    <button class="btn-agregar ">Crear Nueva Categoria</button>
+                                    <button class="btn-agregar ">Crear Categoria</button>
                                 </a>
                             </div>
                         </div>
                     </div>
                     {{-- fin seccion filtro o busqueda --}}
-                    <div class="bg-white  shadow-md rounded my-6">
+                    <div class="bg-white  shadow-md rounded my-6 ">
                         @if ($categorias->count())
-                        <table class="min-w-max w-full table-auto">
+                        <table class="min-w-max w-full table-auto border-gray-200 border  ">
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Id</th>
@@ -65,7 +65,7 @@
                                                 <button class="btn-editar mb-1">Editar</button>
                                             </div>
                                             <div class="mt-1 px-3">
-                                                <a onclick="confirm('¿Estas Seguro de Eliminar La Categoria?')||event.stopImmediatePropagation()"
+                                                <a onclick="confirm('¿Estas Seguro de Eliminar?')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $categoria->id }})"><button
                                                         class="btn btn-eliminar">Eliminar</button> </a>
                                             </div>

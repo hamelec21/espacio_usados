@@ -1,7 +1,7 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
-    <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] p-5">
+    <div class="container mx-auto px-4">
         <div class="mt-20 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Estado de Usuarios</h1>
         </div>
@@ -25,7 +25,7 @@
                                     </div>
                                     <input wire:model.live="search" type="text" id="table-search-users"
                                         class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Buscar Estado Publicacion">
+                                        placeholder="Buscar Estado usuario">
                                 </div>
                                 <a href="{{ route('crear-estado-usuario') }}">
                                     <button class="btn-agregar ">Crear Nuevo Estado</button>
@@ -64,7 +64,7 @@
                                                 <button class="btn-editar mb-1">Editar</button>
                                             </div>
                                             <div class="mt-1 px-3">
-                                                <a onclick="confirm('¿Estas Seguro de Eliminar El Estado?')||event.stopImmediatePropagation()"
+                                                <a onclick="confirm('¿Estas Seguro de Eliminar?')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $usuario->id }})"><button
                                                         class="btn btn-eliminar">Eliminar</button> </a>
                                             </div>

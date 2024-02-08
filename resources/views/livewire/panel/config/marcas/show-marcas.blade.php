@@ -1,8 +1,8 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
-    <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] p-5">
-        <div class="mt-20 mb-10">
+    <div class="container mx-auto px-4">
+        <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Listado de Marcas</h1>
         </div>
         <div class="overflow-x-auto">
@@ -28,7 +28,7 @@
                                         placeholder="Buscar Marca">
                                 </div>
                                 <a href="{{ route('crear-marca') }}">
-                                    <button class="btn-agregar ">Crear Nuevo Marca</button>
+                                    <button class="btn-agregar ">Crear Marca</button>
                                 </a>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                                 <button class="btn-editar mb-1">Editar</button>
                                             </div>
                                             <div class="mt-1 px-3">
-                                                <a onclick="confirm('¿Estas Seguro de Eliminar La Marca?')||event.stopImmediatePropagation()"
+                                                <a onclick="confirm('¿Estas Seguro de Eliminar?')||event.stopImmediatePropagation()"
                                                     wire:click="destroy({{ $marca->id }})"><button
                                                         class="btn btn-eliminar">Eliminar</button> </a>
                                             </div>

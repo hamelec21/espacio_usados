@@ -1,11 +1,11 @@
 <div>
-    @include('sidebar-administrador')
+    @include('menu_admin')
     <!--contenido-->
-    <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80] 2xl:w-[85%] p-5">
-        <div class="mt-16 mb-10">
+    <div class="container mx-auto px-4">
+        <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Formulario de Edición</h1>
         </div>
-        <div class="container mx-auto  border-gray-200 border px-8 mt-10 bg-white shadow-lg">
+        <div class="container mx-auto dark:bg-gray-900 border-gray-200 border px-8 mt-10 bg-white shadow-lg">
 
             <form wire:submit="editar" class="max-w-sm mx-auto mt-10 mb-10">
                 <div class="mb-5">
