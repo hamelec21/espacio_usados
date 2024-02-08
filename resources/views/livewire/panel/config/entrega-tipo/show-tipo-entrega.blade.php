@@ -1,7 +1,7 @@
 <div>
     @include('menu_admin')
     <!--contenido-->
-    <div class="container mx-auto">
+    <div class="container mx-auto px-4">
         <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Tipos de Entregas </h1>
         </div>
