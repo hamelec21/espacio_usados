@@ -1,5 +1,5 @@
 <div>
-    @include('menu_admin')
+    @include('menu_vendedor')
     <!--contenido-->
     <div class="container mx-auto px-4">
         <div class="mt-10 mb-10">
@@ -128,7 +128,7 @@
                                                             <button class="btn-editar mb-1">Editar</button>
                                                     </div>
                                                     <div class="mt-1 px-1">
-                                                        <a onclick="confirm('¿Estas Seguro de Eliminar El Usuario?')||event.stopImmediatePropagation()"
+                                                        <a onclick="confirm('¿Estas Seguro de Eliminar El Producto?')||event.stopImmediatePropagation()"
                                                             wire:click="destroy({{ $producto->id }})"><button
                                                                 class="btn btn-eliminar">Eliminar</button> </a>
                                                     </div>
