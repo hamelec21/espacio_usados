@@ -17,4 +17,9 @@ class EstadoProducto extends Model
          }
          return $query->where('nombre', 'like', '%' . $buscar . '%');
      }
+
+     public function productos()
+     {
+         return $this->hasMany(Producto::class, 'id');
+     }
 }

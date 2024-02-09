@@ -9,7 +9,7 @@ class Producto extends Model
 {
     use HasFactory;
     protected $table = 'productos';
-    protected $fillable = ['nombres'];
+    protected $fillable = ['nombre','sku','descripcion','categorias_id','estado_productos_id','tipo_entregas_id','marcas_id','modelos_id','estado_publicaciones_id','precio','foto1','foto2','foto3','foto4','foto5','users_id','regiones_id','comunas_id'];
 
 
     public function scopeBuscar($query, $buscar)
@@ -19,4 +19,25 @@ class Producto extends Model
          }
          return $query->where('nombre', 'like', '%' . $buscar . '%');
      }
+
+     public function scopeEstados($query1, $estados)
+     {
+         if ($estados === '') {
+             return;
+         }
+         return $query1->where('estado_productos_id', 'like', '%' . $estados . '%');
+     }
+
+
+     public function estado_pos() //estado publicaciones
+     {
+         return $this->belongsTo(EstadoPublicacion::class, 'estado_publicaciones_id');
+     }
+
+
+     public function estado_producto() //estado publicaciones
+     {
+         return $this->belongsTo(EstadoProducto::class, 'estado_productos_id');
+     }
+
 }

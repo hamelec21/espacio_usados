@@ -135,6 +135,8 @@ Livewire.on('bloqueado', function(message) {
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/analytics-index.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    
 </body>
+
 
 </html>

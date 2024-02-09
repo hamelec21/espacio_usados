@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/usuario/perfil/editar', App\Livewire\Usuario\Perfil\Editar::class)->name('editar');
     Route::get('/usuario/productos/show-productos', App\Livewire\Usuario\Productos\ShowProductos::class)->name('show-productos');
     Route::get('/usuario/productos/crear-producto', App\Livewire\Usuario\Productos\CrearProducto::class)->name('crear-producto');
-    Route::get('/usuario/productos/editar-producto/{id}', App\Livewire\Usuario\Productos\EditarProducto::class)->name('editar-productos');
+    Route::get('/usuario/productos/editar-producto/{id}', App\Livewire\Usuario\Productos\EditarProducto::class)->name('editar-producto');
 });
 
 /*
@@ -107,19 +107,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('panel/config/modelos/crear-modelo', App\Livewire\Panel\Config\Modelos\CrearModelo::class)->name('crear-modelo');
     Route::get('panel/config/modelos/editar-modelo/{id}', App\Livewire\Panel\Config\Modelos\EditarModelo::class)->name('editar-modelo');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 |--------------------------------------------------------------------------

@@ -1,11 +1,6 @@
 <x-app-layout>
-    @include('header')
-    <br>
-    <div class="mt-16">
-        <div class="mt-10 mb-10">
-            <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">
-                Bienvenido:{{ auth()->user()->name }}</h1>
-        </div>
+   @include('menu_vendedor')
+    <div class="mt-10">
         <div class="container mx-auto flex justify-center mt-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-10">
                 <div class="w-full">
