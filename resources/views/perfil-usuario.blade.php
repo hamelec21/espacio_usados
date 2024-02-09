@@ -1,5 +1,5 @@
 <x-app-layout>
-    @include('header')
+    @include('menu_vendedor')
        <!--sidebar-->
        <!--contenido-->
        <div class="mt-16">

@@ -40,7 +40,7 @@ class CrearProducto extends Component
                     'nombre' => $this->nombre,
                     'users_id' => auth()->user()->id,
                     'regiones_id' => auth()->user()->regiones_id,
-                    'comuas_id' => auth()->user()->comunas_id,
+                    'comunas_id' => auth()->user()->comunas_id,
                     'descripcion' => $this->descripcion,
                     'categorias_id' => $this->categorias_id,
                     'estado_productos_id' => $this->estado_productos_id,
