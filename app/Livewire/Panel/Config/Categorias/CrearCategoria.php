@@ -4,20 +4,27 @@ namespace App\Livewire\Panel\Config\Categorias;
 
 use App\Models\Categoria;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CrearCategoria extends Component
 {
+    use WithFileUploads;
 
     public $nombre; // variables publicas del formularios
+    public $foto; // variables publicas del formularios
+    public $categorias = [];
     public function save()
     {
         $this->validate([
             'nombre' => 'required',
+            'foto' => 'required',
         ]);
         Categoria::create([
+            $path = $this->foto->store('categorias', 'public'),
             'nombre' => $this->nombre,
+            'foto' => $path,
         ]);
-        $this->reset(['nombre']);
+        $this->reset(['nombre','foto']);
         $this->dispatch('render');
         $this->dispatch('insert');
         return redirect()->route('show-categorias');

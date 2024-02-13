@@ -77,7 +77,7 @@ class EditarProducto extends Component
 
         // Actualizar las imágenes solo si se proporcionan nuevas imágenes
         if ($this->foto1) {
-            
+
             // Verifica si la imagen actual es diferente de la nueva
             if ($this->foto1 != $producto->foto1) {
                 // Elimina la imagen actual

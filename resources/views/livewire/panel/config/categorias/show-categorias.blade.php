@@ -40,7 +40,8 @@
                             <thead>
                                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                     <th class="py-3 px-6 text-left">Id</th>
-                                    <th class="py-3 px-6 text-left">Nombre Permiso</th>
+                                    <th class="py-3 px-6 text-left">Foto</th>
+                                    <th class="py-3 px-6 text-left">Categoria</th>
                                     <th class="py-3 px-6 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -51,6 +52,11 @@
                                         <div class="flex items-center">
                                             <span>{{ $categoria->id }}</span>
                                         </div>
+                                    </td>
+                                    <td class="py-3 px-6 text-left whitespace-nowrap">
+                                        <div class='h-[64px] w-[64px]'
+                                        style="background-image: url('{{ asset('storage/' . $categoria->foto) }}'); background-size: cover; background-position: center;">
+                                    </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <span>{{ $categoria->nombre }}</span>

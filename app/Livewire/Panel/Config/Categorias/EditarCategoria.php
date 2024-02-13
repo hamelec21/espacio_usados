@@ -3,12 +3,17 @@
 namespace App\Livewire\Panel\Config\Categorias;
 
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditarCategoria extends Component
 {
+    use WithFileUploads;
     public $categoriaId; // variablr oculta en formulario
     public $nombre; // variables publicas del formularios
+    public $foto; // variables publicas del formularios
+    public $categorias = [];
 
     public function mount($id)
     {
@@ -18,6 +23,7 @@ class EditarCategoria extends Component
         }
         $this->categoriaId = $categoria->id;
         $this->nombre = $categoria->nombre;
+        $this->foto = $categoria->foto;
     }
 
     public function editar()
@@ -30,6 +36,17 @@ class EditarCategoria extends Component
             return redirect()->route('show-categorias')->with('error', 'Registro de Comuna no encontrado.');
         }
         $categoria->nombre = $this->nombre;
+         // Actualizar las imágenes solo si se proporcionan nuevas imágenes
+         if ($this->foto) {
+
+            // Verifica si la imagen actual es diferente de la nueva
+            if ($this->foto != $categoria->foto) {
+                // Elimina la imagen actual
+                Storage::delete($categoria->foto);
+                // Almacena la nueva imagen
+                $categoria->foto = $this->foto->store('categorias', 'public');
+            }
+        }
         $categoria->save();
         $this->dispatch('editar');
         return redirect()->route('show-categorias');
