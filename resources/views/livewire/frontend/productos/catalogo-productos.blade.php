@@ -49,7 +49,7 @@
                     <div
                         class="absolute inset-0 bg-black bg-opacity-40 flex items-center
                 justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
-                        <a href="/detalle_producto"
+                        <a href="{{ route('producto', ['id' => $producto->id]) }}"
                             class="text-white text-lg w-8 h-8 rounded-full bg-sky-600 flex items-center justify-center hover:bg-orange-500 transition"
                             title="Ver Producto">
                             <i class="fa-solid fa-eye"></i>
@@ -62,11 +62,11 @@
                     </div>
                 </div>
                 <div class="pt-4 pb-3 px-4">
-                    <a href="detalle_producto">
+                    <a href="{{ route('producto', ['id' => $producto->id]) }}">
                         <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{ $producto->nombre }}</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
-                        <p class="text-xl text-orange-500 font-semibold text-center"> ${{ number_format($producto->precio, 0, ',', '.') }}.-</p>
+                        <p class="text-xl text-orange-500 font-semibold text-center"> ${{ number_format($producto->precio, 0, ',', '.') }}.- </p>
 
                     </div>
                     <div class="flex items-center">
@@ -91,7 +91,7 @@
         @else
         @include('components.alerta-search-not')
     @endif
-    <div class="bg-gray-200 ">
+    <div class="bg-orange-200 mt-10 ">
         @if ($productos->hasPages())
             <div class="px-6 py-3 ">
                 {{ $productos->links() }}

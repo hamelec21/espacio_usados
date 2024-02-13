@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.jsdelivr.net/npm/bundle-js@1.0.3/bundler.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" /> <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+   
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -135,7 +136,7 @@ Livewire.on('bloqueado', function(message) {
     <script src="{{ asset('assets/libs/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/analytics-index.init.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    
+
 </body>
 
 

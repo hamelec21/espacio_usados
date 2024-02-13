@@ -13,13 +13,21 @@ class CatalogoProductos extends Component
     public $filtro_comuna;
     public $filtro_region;
 
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    protected $listeners = ['render' => 'render'];
+
     public function render()
     {
         $productos = Producto::buscar($this->search) // Suponiendo que tienes una función buscar en el modelo Producto
         ->regiones($this->filtro_region)
         ->comunas($this->filtro_comuna)
         ->orderBy('id', 'ASC')
-        ->paginate(10);
+        ->paginate(12);
 
         $regiones=Region::all();
         $comunas=Comuna::all();

@@ -18,12 +18,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-
-
-
-
-
-
+//Route::get('/frontend/productos/productos/{id}', App\Livewire\Frontend\Productos\Producto::class)->name('producto');
+Route::get('/producto/{id}', App\Livewire\Producto::class)->name('producto');
 
 
 
@@ -38,8 +34,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/detalle_producto', function () {
-    return view('/detalle_producto');
+Route::get('/producto', function () {
+    return view('/producto');
 });
 
 Route::get('/favorito', function () {
