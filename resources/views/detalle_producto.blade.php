@@ -100,16 +100,7 @@
                     <p class="mt-4 text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos eius eum
                         reprehenderit dolore vel mollitia optio consequatur hic asperiores inventore suscipit, velit
                         consequuntur, voluptate doloremque iure necessitatibus adipisci magnam porro.</p>
-                    <div class="mt-4">
-                        <h3 class="text-sm text-gray-800 uppercase mb-1">Cantidad</h3>
-                        <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">-
-                            </div>
-                            <div class="h-8 w-8 text-base flex items-center justify-center">1</div>
-                            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">+
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <div class="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
                         <a href="#"
