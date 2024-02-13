@@ -20,6 +20,7 @@ class Producto extends Model
          return $query->where('nombre', 'like', '%' . $buscar . '%');
      }
 
+
      public function scopeEstados($query1, $estados)
      {
          if ($estados === '') {
@@ -28,6 +29,30 @@ class Producto extends Model
          return $query1->where('estado_productos_id', 'like', '%' . $estados . '%');
      }
 
+
+     public function scopeRegiones($query2, $regiones)
+     {
+         if ($regiones === '') {
+             return;
+         }
+         return $query2->where('regiones_id', 'like', '%' . $regiones . '%');
+     }
+
+     public function scopeComunas($query3, $comunas)
+     {
+         if ($comunas === '') {
+             return;
+         }
+         return $query3->where('comunas_id', 'like', '%' . $comunas . '%');
+     }
+
+
+
+
+
+
+
+     //relaciones
 
      public function estado_pos() //estado publicaciones
      {
