@@ -28,7 +28,7 @@
                 <div class="w-full">
                     {{-- card vender --}}
                     <div
-                        class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        class="max-w-sm p-7 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <svg class="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -46,7 +46,7 @@
                         </a>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Lorem ipsum dolor sit, amet
                             consectetur adipisicing elit.</p>
-                        <a href="{{ route('show-productos') }}" class="bg-green-700 hover:bg-green-800 px-4 py-1 text-white rounded-md">
+                        <a href="{{ route('show-productos') }}" class="bg-green-700 hover:bg-green-800 px-4 py-1  text-white rounded-md">
                             ¡Sí, quiero vender!
                         </a>
                     </div>
