@@ -21,15 +21,6 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/frontend/productos/productos/{id}', App\Livewire\Frontend\Productos\Producto::class)->name('producto');
 Route::get('/producto/{id}', App\Livewire\Producto::class)->name('producto');
 
-
-
-
-
-
-
-
-
-
 Route::get('/', function () {
     return view('home');
 });
