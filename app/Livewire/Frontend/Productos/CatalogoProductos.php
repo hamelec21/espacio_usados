@@ -14,10 +14,7 @@ class CatalogoProductos extends Component
     public $filtro_region;
 
 
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
+    
 
     protected $listeners = ['render' => 'render'];
 
