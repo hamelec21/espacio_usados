@@ -6,6 +6,9 @@ use App\Models\Comuna;
 use App\Models\Producto;
 use App\Models\Region;
 use Livewire\Component;
+use Gloudemans\Shoppingcart\Facades\Cart;
+
+
 
 class CatalogoProductos extends Component
 {
@@ -13,10 +16,31 @@ class CatalogoProductos extends Component
     public $filtro_comuna;
     public $filtro_region;
 
-
-    
-
     protected $listeners = ['render' => 'render'];
+
+
+    public function store($id,$nombre,$precio)
+    {
+        Cart::add($id,$nombre,$precio)->associate('\app\Models\Producto');
+        session()->flash('succes_message','agregado al carrito');
+        return redirect()->route('carrito');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function render()
     {

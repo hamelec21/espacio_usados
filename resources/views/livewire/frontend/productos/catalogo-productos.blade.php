@@ -80,7 +80,7 @@
 
                     </div>
                 </div>
-                <a href="#"
+                <a href="#" wire:click.prevent="({{ $producto->id }},{{ $producto->nombre }},{{ $producto->precio }})"
                     class="block w-full py-1 text-center text-white  border border-gray-300 rounded-b bg-sky-600 hover:bg-orange-500 hover:text-white transition">Agregar
                     al Carro</a>
             </div>

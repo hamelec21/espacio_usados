@@ -29,6 +29,8 @@
     @include('menu_principal')
 
 
+
+
     {{-- detalle de producto --}}
 
     @livewireScripts

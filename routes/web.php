@@ -18,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-//Route::get('/frontend/productos/productos/{id}', App\Livewire\Frontend\Productos\Producto::class)->name('producto');
+
+
+
+
+
+//productos detalle
+
 Route::get('/producto/{id}', App\Livewire\Producto::class)->name('producto');
 
 Route::get('/', function () {
@@ -65,6 +71,27 @@ Route::middleware([
         return view('dashboard-usuario');
     })->name('dashboard-usuario');
 });
+
+/*
+|--------------------------------------------------------------------------
+|                   Rutas del  carrito
+|--------------------------------------------------------------------------
+*/
+Route::get('/carrito', function () {
+    return view('/carrito');
+});
+//Route::get('/carrito', App\Livewire\Carrito::class)->name('carrito');
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

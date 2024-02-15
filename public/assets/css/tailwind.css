@@ -564,7 +564,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   content: "80% - better than my password, probably !";
 }
 
-.progress_bar {  
+.progress_bar {
   height: 8px;
   border-radius: 30px;
   text-align: center;
@@ -913,7 +913,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
 }
 
-.selectr-tag-remove::after, 
+.selectr-tag-remove::after,
 .selectr-tag-remove::before{
   width: 1px;
 }
@@ -1040,7 +1040,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   border-color: rgb(34 197 94 / var(--tw-border-opacity));
 }
 
-.custom-checkbox .checked, 
+.custom-checkbox .checked,
 .custom-checkbox input[type=checkbox] {
   display: none;
 }
@@ -1317,7 +1317,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
 }
 
 /* .modal-dialog-scrollable {
-     @apply h-120 !important ; 
+     @apply h-120 !important ;
 } */
 
 .modal-dialog-scrollable {
@@ -1526,11 +1526,11 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
-.dataTable-table > tbody > tr > td, 
-.dataTable-table > tbody > tr > th, 
-.dataTable-table > tfoot > tr > td, 
-.dataTable-table > tfoot > tr > th, 
-.dataTable-table > thead > tr > td, 
+.dataTable-table > tbody > tr > td,
+.dataTable-table > tbody > tr > th,
+.dataTable-table > tfoot > tr > td,
+.dataTable-table > tfoot > tr > th,
+.dataTable-table > thead > tr > td,
 .dataTable-table > thead > tr > th{
   padding:  16px 20px;
 }
@@ -1547,8 +1547,8 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
 
-.dataTable-pagination .active a, 
-.dataTable-pagination .active a:focus, 
+.dataTable-pagination .active a,
+.dataTable-pagination .active a:focus,
 .dataTable-pagination .active a:hover{
   background-color: #f1f5f9;
 }
@@ -1610,7 +1610,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
-.mce-btn.mce-disabled button, 
+.mce-btn.mce-disabled button,
 .mce-btn.mce-disabled:hover button{
   opacity: .7 !important;
 }
@@ -1652,7 +1652,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
 } */
 
 .dark .tox .tox-statusbar__branding svg,
-.dark .tox .tox-collection__item-checkmark svg, 
+.dark .tox .tox-collection__item-checkmark svg,
 .dark .tox .tox-collection__item-icon svg,
 .dark .tox .tox-tbtn svg{
   fill: #76819b !important;
@@ -5072,7 +5072,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
   padding: 7px 5px;
   text-align: center;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-  --tw-bg-opacity: 0.18; 
+  --tw-bg-opacity: 0.18;
   color: #3b82f6;
 }
 
@@ -5087,7 +5087,7 @@ input[type="checkbox"]:checked~ input[type="checkbox"]:checked~ input[type="chec
 
 .fc .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk h2{
   font-size: 16px;
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 .fc .fc-toolbar.fc-header-toolbar{
@@ -6167,32 +6167,32 @@ a {
 
 [role="tab"].active{
     color: #2563eb !important;
-    border-color: #2563eb !important; 
+    border-color: #2563eb !important;
 }
 
 [role="tab"].active:hover{
   color: #2563eb !important;
-  border-color: #2563eb !important; 
+  border-color: #2563eb !important;
 }
 
 [role="tab-pill"].active{
   color: #475569 !important;
-  border-color: #cbd5e1 !important; 
+  border-color: #cbd5e1 !important;
 }
 
 .dark [role="tab-pill"].active{
   color: #cbd5e1 !important;
-  border-color: #334155 !important; 
+  border-color: #334155 !important;
 }
 
 [role="tab-pill"].active:hover{
   color: #475569 !important;
-  border-color: #cbd5e1 !important; 
+  border-color: #cbd5e1 !important;
 }
 
 .dark [role="tab-pill"].active:hover{
   color: #e2e8f0 !important;
-  border-color: #475569 !important; 
+  border-color: #475569 !important;
 }
 
 .custom-label input:checked + i {
