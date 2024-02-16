@@ -57,11 +57,14 @@
                                     title="Ver Producto">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
-                                <a href="/favorito"
+                                {{--
+                                    <a href="/favorito"
                                     class="text-white text-lg w-8 h-8 rounded-full bg-sky-600 flex items-center justify-center hover:bg-orange-500 transition"
                                     title="Agregar a Favoritos">
                                     <i class="fa-solid fa-heart"></i>
                                 </a>
+                                     --}}
+
                             </div>
                         </div>
                         <div class="pt-4 pb-3 px-4">
