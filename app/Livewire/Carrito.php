@@ -9,15 +9,12 @@ use Livewire\Component;
 class Carrito extends Component
 {
 
-
     protected $listeners = ['render' => 'render'];
-
 
     public function eliminar($id)
     {
         Cart::remove($id);
     }
-
 
     public function sumar($rowId)
     {
