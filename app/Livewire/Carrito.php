@@ -33,12 +33,6 @@ class Carrito extends Component
         Cart::update($rowId,$qty);
     }
 
-
-
-
-
-
-
     public function restar($rowId)
     {
         // Obtener el producto del carrito usando el ID de fila proporcionado

@@ -8,24 +8,26 @@ use App\Models\Region;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
-
-
-
 class CatalogoProductos extends Component
 {
     public $search;
     public $filtro_comuna;
     public $filtro_region;
-    public $id, $nombre,$cantidad,$precio;
+    public $id, $nombre, $cantidad, $precio;
 
-    public function store($id, $nombre,$cantidad,$precio,)
+
+    public function store($id, $nombre, $cantidad, $precio)
     {
-       // dd($precio);
-        $producto = Producto::find($id); // Suponiendo que tienes un modelo Producto y puedes buscar el producto por su ID
-        Cart::add($id, $nombre, $cantidad,$precio,)->associate($producto);
+        $producto = Producto::find($id); // Utilizamos el método find() en el modelo Producto para buscar el producto por su ID
+        Cart::add($id, $nombre, $cantidad, $precio)->associate($producto);
         session()->flash('success_message', 'Item added in Cart');
         return redirect()->route('carrito');
     }
+
+
+
+
+
 
 
     public function render()

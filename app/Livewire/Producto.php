@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -10,6 +11,7 @@ class Producto extends Component
     public $producto;
     public $marca;
     public $categoria;
+    public $id, $nombre,$cantidad,$precio;
 
     public function mount($id)
     {
@@ -17,6 +19,8 @@ class Producto extends Component
         $this->marca = DB::table('marcas')->where('id',$this->producto->marcas_id)->first();
         $this->categoria= DB::table('categorias')->where('id',$this->producto->categorias_id)->first();
     }
+
+
 
     public function render()
     {
