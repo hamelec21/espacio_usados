@@ -14,8 +14,6 @@ class CatalogoProductos extends Component
     public $filtro_comuna;
     public $filtro_region;
     public $id, $nombre, $cantidad, $precio;
-
-
     public function store($id, $nombre, $cantidad, $precio)
     {
         $producto = Producto::find($id); // Utilizamos el método find() en el modelo Producto para buscar el producto por su ID

@@ -26,13 +26,14 @@ use Illuminate\Support\Facades\Route;
 //productos detalle
 
 Route::get('/producto/{id}', App\Livewire\Producto::class)->name('producto');
+Route::get('/detalle-producto/{id}', App\Livewire\DetalleProducto::class)->name('detalle-producto');
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/producto', function () {
-    return view('/producto');
+Route::get('/cart', function () {
+    return view('/cart');
 });
 
 Route::get('/favorito', function () {
@@ -81,17 +82,6 @@ Route::get('/carrito', function () {
     return view('/carrito');
 });
 Route::get('/carrito', App\Livewire\Carrito::class)->name('carrito');
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*

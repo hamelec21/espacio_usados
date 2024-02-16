@@ -52,7 +52,7 @@
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-40 flex items-center
                 justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
-                                <a href="{{ route('producto', ['id' => $producto->id]) }}"
+                                <a href="{{ route('detalle-producto', ['id' => $producto->id]) }}"
                                     class="text-white text-lg w-8 h-8 rounded-full bg-sky-600 flex items-center justify-center hover:bg-orange-500 transition"
                                     title="Ver Producto">
                                     <i class="fa-solid fa-eye"></i>
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="pt-4 pb-3 px-4">
-                            <a href="{{ route('producto', ['id' => $producto->id]) }}">
+                            <a href="{{ route('detalle-producto', ['id' => $producto->id]) }}">
                                 <h4
                                     class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">
                                     {{ $producto->nombre }}</h4>
@@ -86,7 +86,8 @@
 
                             </div>
                         </div>
-                        <a href="#" wire:click.prevent="store('{{ $producto->id }}','{{ $producto->nombre }}','{{ $producto->cantidad }}','{{ $producto->precio }}')"
+                        <a href="#"
+                            wire:click.prevent="store('{{ $producto->id }}','{{ $producto->nombre }}','{{ $producto->cantidad }}','{{ $producto->precio }}')"
                             class="block w-full py-1 text-center text-white border border-gray-300 rounded-b bg-sky-600 hover:bg-orange-500 hover:text-white transition">
                             Agregar al Carro
                         </a>

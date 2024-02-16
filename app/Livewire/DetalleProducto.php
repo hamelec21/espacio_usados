@@ -2,13 +2,12 @@
 
 namespace App\Livewire;
 
-
+use App\Models\Producto;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
-
-class Producto extends Component
+class DetalleProducto extends Component
 {
 
     public $producto;
@@ -25,9 +24,6 @@ class Producto extends Component
     }
 
 
-
-
-
     public function store($id, $nombre, $cantidad, $precio)
     {
 
@@ -40,8 +36,11 @@ class Producto extends Component
         return redirect()->route('carrito');
     }
 
+
+
+
     public function render()
     {
-        return view('livewire.producto');
+        return view('livewire.detalle-producto');
     }
 }
