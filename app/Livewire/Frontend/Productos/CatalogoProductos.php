@@ -5,8 +5,9 @@ namespace App\Livewire\Frontend\Productos;
 use App\Models\Comuna;
 use App\Models\Producto;
 use App\Models\Region;
-use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Livewire\Component;
+
 
 
 
@@ -15,43 +16,28 @@ class CatalogoProductos extends Component
     public $search;
     public $filtro_comuna;
     public $filtro_region;
+    public $id, $nombre,$cantidad,$precio;
 
-    protected $listeners = ['render' => 'render'];
-
-
-    public function store($id,$nombre,$precio)
+    public function store($id, $nombre,$cantidad,$precio,)
     {
-        Cart::add($id,$nombre,$precio)->associate('\app\Models\Producto');
-        session()->flash('succes_message','agregado al carrito');
+       // dd($precio);
+        $producto = Producto::find($id); // Suponiendo que tienes un modelo Producto y puedes buscar el producto por su ID
+        Cart::add($id, $nombre, $cantidad,$precio,)->associate($producto);
+        session()->flash('success_message', 'Item added in Cart');
         return redirect()->route('carrito');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function render()
     {
         $productos = Producto::buscar($this->search) // Suponiendo que tienes una función buscar en el modelo Producto
-        ->regiones($this->filtro_region)
-        ->comunas($this->filtro_comuna)
-        ->orderBy('id', 'ASC')
-        ->paginate(12);
+            ->regiones($this->filtro_region)
+            ->comunas($this->filtro_comuna)
+            ->orderBy('id', 'ASC')
+            ->paginate(12);
 
-        $regiones=Region::all();
-        $comunas=Comuna::all();
-        return view('livewire.frontend.productos.catalogo-productos',compact('productos','regiones','comunas'));
+        $regiones = Region::all();
+        $comunas = Comuna::all();
+        return view('livewire.frontend.productos.catalogo-productos', compact('productos', 'regiones', 'comunas'));
     }
 }

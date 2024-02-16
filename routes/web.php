@@ -80,7 +80,7 @@ Route::middleware([
 Route::get('/carrito', function () {
     return view('/carrito');
 });
-//Route::get('/carrito', App\Livewire\Carrito::class)->name('carrito');
+Route::get('/carrito', App\Livewire\Carrito::class)->name('carrito');
 
 
 
