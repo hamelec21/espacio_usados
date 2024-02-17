@@ -31,7 +31,7 @@ class FortifyServiceProvider extends ServiceProvider
                 $user = User::where('email', $request->email)->first();
                 if ($user && Hash::check($request->password, $user->password)) {
                     if ($user->hasRole(1)) {
-                        return redirect('dashboard');
+                        return redirect('dashboard-administrador');
                     } elseif ($user->hasRole(2)) {
                         return redirect('dashboard-usuario');
                     }

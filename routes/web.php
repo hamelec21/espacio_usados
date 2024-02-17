@@ -45,16 +45,21 @@ Route::middleware([
 });
 
 
+
+/*
+|--------------------------------------------------------------------------
+|                   Rutas de los Dashboard
+|--------------------------------------------------------------------------
+*/
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard-administrador', function () {
+        return view('dashboard-administrador');
+    })->name('dashboard-administrador');
 });
-
 
 Route::middleware([
     'auth:sanctum',
@@ -65,6 +70,19 @@ Route::middleware([
         return view('dashboard-usuario');
     })->name('dashboard-usuario');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------

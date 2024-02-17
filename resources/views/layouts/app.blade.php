@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.jsdelivr.net/npm/bundle-js@1.0.3/bundler.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" /> <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
-   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}">
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -15,10 +16,11 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" />
-    <link rel="stylesheet" href="{{ asset('assets/css/icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}" />
+    <!-- App favicon-->
+    <link href="{{asset('assets/images/favicon.ico') }}" />
+    <link href="{{asset('assets/css/icons.css') }}" />
+    <link href="{{asset('assets/css/tailwind.css') }}" />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
