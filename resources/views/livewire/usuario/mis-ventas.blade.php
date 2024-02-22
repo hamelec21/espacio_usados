@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    {{-- info --}}
+    {{-- informacion usuario ventas --}}
     <div class="container mx-auto px-4 mt-10">
         <div class="grid grid-col-1 md:grid-cols-2 lg:grid-cols-4  gap-4">
             <div class="bg-sky-100 border border-sky-700 shadow-lg">
@@ -85,6 +85,14 @@
         </div>
 
     </div>
+{{-- table de ventas realizadas  --}}
+<div class="text-center mt-10">
+    <h1 class="text-gray-800 text-lg font-bold flex justify-center items-center">
+        Detalles de Mis Ventas
+    </h1>
+</div>
+
+
 
 
 

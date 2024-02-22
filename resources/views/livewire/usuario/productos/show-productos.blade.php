@@ -7,14 +7,14 @@
         </div>
 
         <div class="container mb-10">
-            <div class="shadow-md sm:rounded-lg border-gray-200 border">
+            <div class="shadow-md  border-gray-500 border">
                 <div
                     class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4 bg-gray-50 dark:bg-gray-900 px-4">
                     <div>
                         <!-- Filtro-->
                         <label class="dark:text-gray-200 text-gray-700 text-sm">Estado Producto</label>
                         <select wire:model.live="filtro_estado"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-gray-50 border border-gray-500 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value="">Todo</option>
                             @foreach ($estado_pros as $estado_pro)
                                 <option value="{{ $estado_pro->id }}">{{ $estado_pro->nombre }}</option>
@@ -33,7 +33,7 @@
                             </svg>
                         </div>
                         <input wire:model.live="search" type="text" id="table-search-users"
-                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-500 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Buscar por Nombre">
                     </div>
                     <a href="{{ route('crear-producto') }}">
@@ -50,9 +50,9 @@
             <div class="grid lg:grid-cols-4 gap-4">
                 @foreach ($productos as $item)
                     <div class="">
-                        <div class="card bg-white shadow-sm">
+                        <div class="card bg-white shadow-sm border border-gray-500">
                             <div class="card-body">
-                                <div class="flex justify-between">
+                                <div class="flex justify-around mt-3">
                                     <div>
                                         @if ($item->estado_publicaciones_id == '1')
                                             <span
