@@ -25,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 
 //productos detalle
 
-
 Route::get('/detalle-producto/{id}', App\Livewire\DetalleProducto::class)->name('detalle-producto');
 
 Route::get('/', function () {
@@ -42,6 +41,17 @@ Route::middleware([
     Route::get('/perfil-usuario', function () {
         return view('perfil-usuario');
     })->name('perfil-usuario');
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/mi-cuenta', function () {
+        return view('mi-cuenta');
+    })->name('mi-cuenta');
 });
 
 
@@ -72,18 +82,6 @@ Route::middleware([
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 |                   Rutas del  carrito
@@ -105,6 +103,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/usuario/productos/show-productos', App\Livewire\Usuario\Productos\ShowProductos::class)->name('show-productos');
     Route::get('/usuario/productos/crear-producto', App\Livewire\Usuario\Productos\CrearProducto::class)->name('crear-producto');
     Route::get('/usuario/productos/editar-producto/{id}', App\Livewire\Usuario\Productos\EditarProducto::class)->name('editar-producto');
+    Route::get('/usuario/mis-ventas', App\Livewire\Usuario\MisVentas::class)->name('mis-ventas');
+
 });
 
 /*

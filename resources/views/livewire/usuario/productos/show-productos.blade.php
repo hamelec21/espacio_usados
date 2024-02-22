@@ -1,5 +1,5 @@
 <div>
-    @include('menu_vendedor')
+    @include('menu_principal')
     <!--contenido-->
     <div class="container mx-auto px-4 ">
         <div class="mt-5 mb-5 ">

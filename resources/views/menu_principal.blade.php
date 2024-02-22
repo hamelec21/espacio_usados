@@ -61,7 +61,7 @@
 
                 @auth
                     @if (auth()->user()->hasRole(1) || auth()->user()->hasRole(2))
-                        <a href="#"
+                        <a href="/mi-cuenta"
                             class="flex items-center px-4 text-gray-700 font-bold py-2 rounded">
                             Mi Cuenta
                         </a>
