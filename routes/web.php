@@ -114,10 +114,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
     /*rutas para las categorias*/
     Route::get('panel/config/categorias/show-categorias', App\Livewire\Panel\Config\Categorias\ShowCategorias::class)->name('show-categorias');
     Route::get('panel/config/categorias/crear-categoria', App\Livewire\Panel\Config\Categorias\CrearCategoria::class)->name('crear-categoria');
     Route::get('panel/config/categorias/editar-categoria/{id}', App\Livewire\Panel\Config\Categorias\EditarCategoria::class)->name('editar-categoria');
+      /*rutas para las subcategorias*/
+      Route::get('panel/config/sub-categoria/show-subcategorias', App\Livewire\Panel\Config\SubCategoria\ShowSubcategorias::class)->name('show-subcategorias');
+      Route::get('panel/config/sub-categoria/crear-subcategoria', App\Livewire\Panel\Config\SubCategoria\CrearSubcategoria::class)->name('crear-subcategoria');
+      Route::get('panel/config/sub-categoria/editar-subcategoria/{id}', App\Livewire\Panel\Config\SubCategoria\EditarSubcategoria::class)->name('editar-subcategoria');
+
     /*!ruta para entreaga tipo */
     Route::get('panel/config/entrega-tipo/show-tipo-entrega', App\Livewire\Panel\Config\EntregaTipo\ShowTipoEntrega::class)->name('show-tipo-entrega');
     Route::get('panel/config/entrega-tipo/crear-tipo-entrega', App\Livewire\Panel\Config\EntregaTipo\CrearTipoEntrega::class)->name('crear-tipo-entrega');

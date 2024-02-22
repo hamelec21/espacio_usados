@@ -19,4 +19,14 @@ class Categoria extends Model
          }
          return $query->where('nombre', 'like', '%' . $buscar . '%');
      }
+// relaciones
+
+public function subcategoria()
+    {
+        return $this->hasMany(Subcategoria::class,'id');
+    }
+
+
+
+
 }
