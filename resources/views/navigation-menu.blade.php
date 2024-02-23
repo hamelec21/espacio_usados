@@ -146,11 +146,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
 
-        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-            <x-nav-link href="{{ route('show-categorias') }}" :active="request()->routeIs('dashboard')">
-                {{ __('cate') }}
-            </x-nav-link>
-        </div>
+
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
                 {{ __('Dashboard') }}

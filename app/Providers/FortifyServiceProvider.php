@@ -33,7 +33,9 @@ class FortifyServiceProvider extends ServiceProvider
                     if ($user->hasRole(1)) {
                         return redirect('dashboard-administrador');
                     } elseif ($user->hasRole(2)) {
-                        return redirect('dashboard-usuario');
+                        return redirect('vendedor/dashboard');
+                    } elseif ($user->hasRole(3)) {
+                        return redirect('dashboard-otro');
                     }
                 }
                 // Si no se cumple ninguna de las condiciones anteriores, redirige a la página de inicio de sesión
