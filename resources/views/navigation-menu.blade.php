@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('dashboard-administrador') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -13,124 +13,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <ul class=" flex justify-aroundspace-y-2 font-medium">
-                        <li>
-                            <button type="button"
-                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                                aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth">
-                                <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Configuración</span>
-                                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <ul id="dropdown-auth" class="hidden py-2 space-y-2">
-                                <li>
-                                    <a href="{{ route('show-categorias') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                        Crear Categorias
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-tipo-entrega') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                        Crear Tipo Entregas
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-estado-producto') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Crear Estado Producto</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-estado-publicacion') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                        Crear Estado Publicacion</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-estado-usuario') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Crear Estado Usuario
-                                        </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-marcas') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                        Crear Marcas</a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('show-modelos') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                      Crear Modelos</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <button type="button"
-                                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                                aria-controls="dropdown-auth" data-collapse-toggle="dropdown-auth">
-                                <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Seguridad</span>
-                                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                            <ul id="dropdown-auth" class="hidden py-2 space-y-2">
-                                <li>
-                                    <a href="{{ route('show-role') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">
-                                        Crear Roles
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-permisos') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Crear
-                                        Permisos
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('show-usuario') }}"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Usuarios</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Reset
-                                        password</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700">Profile
-                                        lock</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
                     </x-nav-link>
                 </div>
 
@@ -263,14 +152,14 @@
             </x-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dsd') }}
+            <x-responsive-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
+                {{ __('dashboard-administrador') }}
             </x-responsive-nav-link>
         </div>
 
