@@ -1,5 +1,10 @@
 <div>
-    <!--contenido-->
+
+    @include('navigation-menu')
+    @livewire('menu.vendedor-sidebar')
+ <div class="p-4 sm:ml-64">
+ <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
     <div id="crud-modal" class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-screen bg-black bg-opacity-50">
         <div class="relative p-4 w-full max-w-md">
             <!-- Modal content -->
@@ -60,6 +65,10 @@
             </div>
         </div>
     </div>
+ </div>
+    </div>
+    <!--contenido-->
+
 
 
 

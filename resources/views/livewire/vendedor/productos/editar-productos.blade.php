@@ -1,5 +1,8 @@
 <div>
-    @include('menu_vendedor')
+    @include('navigation-menu')
+    @livewire('menu.vendedor-sidebar')
+<div class="p-4 sm:ml-64">
+<div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
     <div class="container mx-auto px-4">
         <div class="mt-5 mb-5">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200 uppercase">Crear Producto</h1>
@@ -164,6 +167,10 @@
         </div>
 
     </div>
+
+</div>
+   </div>
+
 
     <script src="{{ asset('validaciones/validacion_textarea.js') }}"></script>
 </div>

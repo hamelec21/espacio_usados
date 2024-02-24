@@ -1,27 +1,34 @@
 <div>
-    @include('menu_admin')
-    <!--contenido-->
-    <div class="container mx-auto px-4">
-        <div class="mt-10 mb-10">
-            <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200 uppercase">Formulario de Edición</h1>
-        </div>
-        <div class="container mx-auto  border-gray-200 border px-8 mt-10 bg-white dark:gray-900 dark:bg-gray-900">
-
-            <form wire:submit="editar" class="max-w-sm mx-auto mt-10 mb-10">
-                <div class="mb-5">
-                    <input type="hidden" wire:model="categoriaId">
-                    <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Editar Tipo Entrega</label>
-                    <input wire:model="nombre" type="text" id="base-input"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <x-input-error for="nombre" />
-                    </div>
-
-                <div class="flex justify-center">
-                    <button  type="submit" type="button"class="btn-editar w-full">Guardar</button>
-                    <button wire:click="cancelar" type="button" class="btn-cancelar w-full">Cancelar</button>
-                </div>
-            </form>
-        </div>
-
+    @include('navigation-menu')
+    @livewire('menu.admin-sidebar')
+ <div class="p-4 sm:ml-64">
+ <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+ <!--contenido-->
+ <div class="container mx-auto px-4">
+    <div class="mt-10 mb-10">
+        <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200 uppercase">Formulario de Edición</h1>
     </div>
+    <div class="container mx-auto  border-gray-200 border px-8 mt-10 bg-white dark:gray-900 dark:bg-gray-900">
+
+        <form wire:submit="editar" class="max-w-sm mx-auto mt-10 mb-10">
+            <div class="mb-5">
+                <input type="hidden" wire:model="categoriaId">
+                <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Editar Tipo Entrega</label>
+                <input wire:model="nombre" type="text" id="base-input"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <x-input-error for="nombre" />
+                </div>
+
+            <div class="flex justify-center">
+                <button  type="submit" type="button"class="btn-editar w-full">Guardar</button>
+                <button wire:click="cancelar" type="button" class="btn-cancelar w-full">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+ </div>
+    </div>
+
 </div>

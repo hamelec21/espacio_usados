@@ -1,6 +1,8 @@
 <div>
-    @include('menu_admin')
-    <!--contenido-->
+    @include('navigation-menu')
+    @livewire('menu.admin-sidebar')
+ <div class="p-4 sm:ml-64">
+ <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
     <div class="container mx-auto px-4">
         <div class="mt-10 mb-10">
             <h1 class="text-center text-xl font-bold  text-gray-700 dark:text-gray-200">Estado del Producto</h1>
@@ -90,6 +92,10 @@
 
 
     </div>
+
+ </div>
+    </div>
+
 </div>
 
 

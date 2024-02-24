@@ -1,5 +1,8 @@
-estado-produ<div>
-    @include('menu_admin')
+<div>
+    @include('navigation-menu')
+    @livewire('menu.admin-sidebar')
+ <div class="p-4 sm:ml-64">
+ <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
     <!--contenido-->
     <div class="container mx-auto px-4">
         <div class="mt-20 mb-10">
@@ -21,6 +24,8 @@ estado-produ<div>
         </div>
 
     </div>
+</div>
+</div>
 </div>
 
 
