@@ -17,7 +17,7 @@ class EditarSubcategoria extends Component
     {
         $subcategorias = SubCategoria::find($id);
         if (!$subcategorias) {
-            return redirect()->route('show-subcategorias')->with('error', 'Registro de Comuna no encontrado.');
+            return redirect()->route('show-subcategoria')->with('error', 'Registro de Comuna no encontrado.');
         }
         $this->subcategoriaId = $subcategorias->id;
         $this->categorias_id = $subcategorias->categorias_id;
@@ -31,18 +31,18 @@ class EditarSubcategoria extends Component
         ]);
         $subcategorias = SubCategoria::find($this->categorias_id);
         if (!$subcategorias) {
-            return redirect()->route('show-subcategorias')->with('error', 'Registro de Comuna no encontrado.');
+            return redirect()->route('show-subcategoria')->with('error', 'Registro de Comuna no encontrado.');
         }
         $subcategorias->categorias_id = $this->categorias_id;
         $subcategorias->nombre = $this->nombre;
         $subcategorias->save();
         $this->dispatch('editar');
-        return redirect()->route('show-subcategorias');
+        return redirect()->route('show-subcategoria');
     }
 
     public function cancelar()
     {
-        return redirect()->route('show-subcategorias');
+        return redirect()->route('show-subcategoria');
     }
     public function render()
     {

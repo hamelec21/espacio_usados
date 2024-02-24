@@ -88,17 +88,5 @@ Route::get('/carrito', function () {
 Route::get('/carrito', App\Livewire\Carrito::class)->name('carrito');
 
 
-/*
-|--------------------------------------------------------------------------
-|                   Rutas del  Modulo de usuario
-|--------------------------------------------------------------------------
-*/
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/usuario/perfil/editar', App\Livewire\Usuario\Perfil\Editar::class)->name('editar');
-    Route::get('/usuario/productos/show-productos', App\Livewire\Usuario\Productos\ShowProductos::class)->name('show-productos');
-    Route::get('/usuario/productos/crear-producto', App\Livewire\Usuario\Productos\CrearProducto::class)->name('crear-producto');
-    Route::get('/usuario/productos/editar-producto/{id}', App\Livewire\Usuario\Productos\EditarProducto::class)->name('editar-producto');
-    Route::get('/usuario/mis-ventas', App\Livewire\Usuario\MisVentas::class)->name('mis-ventas');
 
-});
 

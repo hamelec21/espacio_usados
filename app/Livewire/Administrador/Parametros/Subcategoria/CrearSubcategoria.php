@@ -22,16 +22,17 @@ class CrearSubcategoria extends Component
         $this->reset(['categoria','nombre']);
         $this->dispatch('render');
         $this->dispatch('insert');
-        return redirect()->route('show-subcategorias');
+        return redirect()->route('show-subcategoria');
     }
 
 
     public function cancelar()
     {
-        return redirect()->route('show-subcategorias');
+        return redirect()->route('show-subcategoria');
     }
     public function render()
     {
+        $categorias =Categoria::all();
         return view('livewire.administrador.parametros.subcategoria.crear-subcategoria',compact('categorias'));
     }
 }
