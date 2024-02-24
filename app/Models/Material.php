@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nombre'];
+    public function scopeBuscar($query, $buscar)
+    {
+        if ($buscar === '') {
+            return;
+        }
+        return $query->where('nombre', 'like', '%' . $buscar . '%');
+    }
 }

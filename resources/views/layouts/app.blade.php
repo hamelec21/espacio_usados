@@ -132,6 +132,8 @@ Livewire.on('bloqueado', function(message) {
 
 
 
+
+
 <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/libs/chart.js/chart.min.js') }}"></script>
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>

@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*ruta del Dashboard*/
     Route::get('administrador/dashboard',App\Livewire\Administrador\Dashboard::class)->name('administrador.dashboard');
+   /*rutas para las categorias*/
+Route::get('administrador/parametros/colores/show-colores', App\Livewire\Administrador\Parametros\Colores\ShowColores::class)->name('show-colores');
+Route::get('administrador/parametros/colores/crear-color', App\Livewire\Administrador\Parametros\Colores\CrearColor::class)->name('crear-color');
+Route::get('administrador/parametros/colores/editar-color/{id}', App\Livewire\Administrador\Parametros\Colores\EditarColor::class)->name('editar-color');
+ /*rutas para las categorias*/
+Route::get('administrador/parametros/materiales/show-material', App\Livewire\Administrador\Parametros\Materiales\ShowMaterial::class)->name('show-material');
+Route::get('administrador/parametros/materiales/crear-material', App\Livewire\Administrador\Parametros\Materiales\CrearMaterial::class)->name('crear-material');
+Route::get('administrador/parametros/materiales/editar-material/{id}', App\Livewire\Administrador\Parametros\Materiales\EditarMaterial::class)->name('editar-material');
+
+
+
 
     /*rutas para las categorias*/
     Route::get('administrador/parametros/categorias/show-categorias', App\Livewire\Administrador\Parametros\Categorias\ShowCategorias::class)->name('show-categorias');
