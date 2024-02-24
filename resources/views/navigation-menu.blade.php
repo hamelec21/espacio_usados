@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard-administrador') }}">
+                    <a href="#">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -13,13 +13,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
+                    <x-nav-link href="#" :active="request()->routeIs('dashboard/administrador')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
+                    <x-nav-link href="#" :active="request()->routeIs('dashboard/administrador')">
                     </x-nav-link>
                 </div>
 
@@ -148,13 +148,13 @@
 
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
+            <x-responsive-nav-link href="#" :active="request()->routeIs('dashboard/administrador')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="{{ route('dashboard-administrador') }}" :active="request()->routeIs('dashboard-administrador')">
+            <x-responsive-nav-link href="#" :active="request()->routeIs('dashboard/administrador')">
                 {{ __('dashboard-administrador') }}
             </x-responsive-nav-link>
         </div>
