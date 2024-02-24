@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    /*ruta del Dashboard*/
+    Route::get('administrador/dashboard',App\Livewire\Administrador\Dashboard::class)->name('dashboard');
 
     /*rutas para las categorias*/
     Route::get('administrador/parametros/categorias/show-categorias', App\Livewire\Administrador\Parametros\Categorias\ShowCategorias::class)->name('show-categorias');
