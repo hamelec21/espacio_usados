@@ -1,6 +1,5 @@
 <div>
 
-    {{-- encabezado --}}
     <div class="px-4">
         <div
             class="container mx-auto rounded-lg bg-white py-2 flex justify-center items-center  mt-5 border border-gray-200 shadow-lg">
@@ -60,7 +59,8 @@
                 </div>
 
                 <div class="text-center mb-2 font-semibold">
-                    <button class="bg-yellow-500 hover:bg-yellow-600 px-10 text-white py-1 rounded-lg">Cargo Por Servicio</button>
+                    <button class="bg-yellow-500 hover:bg-yellow-600 px-10 text-white py-1 rounded-lg">Cargo Por
+                        Servicio</button>
                 </div>
             </div>
 
@@ -84,114 +84,122 @@
         </div>
 
     </div>
-{{-- table de ventas realizadas  --}}
-<div class="text-center mt-10 mb-10">
-    <h1 class="text-gray-800 text-lg font-bold flex justify-center items-center">
-        Detalles de Mis Ventas
-    </h1>
-</div>
+    {{-- table de ventas realizadas  --}}
+    <div class="text-center mt-10 mb-10">
+        <h1 class="text-gray-800 text-lg font-bold flex justify-center items-center">
+            Detalles de Mis Ventas
+        </h1>
+    </div>
 
- <div class="container mx-auto px-4">
-    <div class="card-body">
-        <div class="relative overflow-x-auto  sm:rounded">
-            <table class="table-auto w-full">
-                <thead>
-                    <tr class="bg-primary-500 text-center">
-                        <th class="text-sm font-medium text-white px-3 py-3 border-l border-transparent">
-                            Producto
-                        </th>
-                        <th class="text-sm font-medium text-white px-3 py-3">
-                           Valor
-                        </th>
-                        <th class="text-sm font-medium text-white px-3 py-3">
-                            Comision
-                        </th>
-                        <th class="text-sm font-medium text-white px-3 py-3">
-                            pago
-                        </th>
-                        <th class="text-sm font-medium text-white px-3 py-3">
-                            Fecha
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
-                            .com
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            1 Year
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $75.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $5.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $10.00
-                        </td>
+    <div class="container mx-auto px-4">
+        <div class="card-body">
+            <div class="relative overflow-x-auto  sm:rounded">
+                <table class="table-auto w-full">
+                    <thead>
+                        <tr class="bg-primary-500 text-center">
+                            <th class="text-sm font-medium text-white px-3 py-3 border-l border-transparent">
+                                Producto
+                            </th>
+                            <th class="text-sm font-medium text-white px-3 py-3">
+                                Valor
+                            </th>
+                            <th class="text-sm font-medium text-white px-3 py-3">
+                                Comision
+                            </th>
+                            <th class="text-sm font-medium text-white px-3 py-3">
+                                pago
+                            </th>
+                            <th class="text-sm font-medium text-white px-3 py-3">
+                                Fecha
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
+                                .com
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                1 Year
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $75.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $5.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $10.00
+                            </td>
 
-                    </tr>
-                    <tr>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
-                            .com
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            1 Year
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $75.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $5.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $10.00
-                        </td>
+                        </tr>
+                        <tr>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
+                                .com
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                1 Year
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $75.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $5.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $10.00
+                            </td>
 
-                    </tr>
-                    <tr>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
-                            .com
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            1 Year
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $75.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $5.00
-                        </td>
-                        <td class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
-                            $10.00
-                        </td>
-                    </tr>
-                </tbody>
-             </table>
+                        </tr>
+                        <tr>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-l border-[#E8E8E8] dark:border-slate-900">
+                                .com
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                1 Year
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $75.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-white dark:bg-slate-700 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $5.00
+                            </td>
+                            <td
+                                class="text-center text-dark py-2 px-3 bg-slate-50 dark:bg-slate-900/20 dark:text-slate-300 border-b border-[#E8E8E8] dark:border-slate-900">
+                                $10.00
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
- </div>
-
-
- @include('navigation-menu')
-     @livewire('menu.vendedor-sidebar')
- <div class="p-4 sm:ml-64">
- <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-
-
- </div>
-    </div>
-
-
-
-
-
-
-
 
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
 

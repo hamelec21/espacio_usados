@@ -5,13 +5,13 @@ use Illuminate\Support\Facades\Route;
 /*
 /*
 |--------------------------------------------------------------------------
-|                   Rutas del  Modulo de config app
+|                   Rutas del  Modulo de administrador
 |--------------------------------------------------------------------------
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*ruta del Dashboard*/
-    Route::get('administrador/dashboard',App\Livewire\Administrador\Dashboard::class)->name('dashboard');
+    Route::get('administrador/dashboard',App\Livewire\Administrador\Dashboard::class)->name('administrador.dashboard');
 
     /*rutas para las categorias*/
     Route::get('administrador/parametros/categorias/show-categorias', App\Livewire\Administrador\Parametros\Categorias\ShowCategorias::class)->name('show-categorias');
