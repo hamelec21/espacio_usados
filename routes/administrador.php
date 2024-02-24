@@ -11,18 +11,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*ruta del Dashboard*/
-    Route::get('administrador/dashboard',App\Livewire\Administrador\Dashboard::class)->name('administrador.dashboard');
-   /*rutas para las categorias*/
-Route::get('administrador/parametros/colores/show-colores', App\Livewire\Administrador\Parametros\Colores\ShowColores::class)->name('show-colores');
-Route::get('administrador/parametros/colores/crear-color', App\Livewire\Administrador\Parametros\Colores\CrearColor::class)->name('crear-color');
-Route::get('administrador/parametros/colores/editar-color/{id}', App\Livewire\Administrador\Parametros\Colores\EditarColor::class)->name('editar-color');
- /*rutas para las categorias*/
-Route::get('administrador/parametros/materiales/show-material', App\Livewire\Administrador\Parametros\Materiales\ShowMaterial::class)->name('show-material');
-Route::get('administrador/parametros/materiales/crear-material', App\Livewire\Administrador\Parametros\Materiales\CrearMaterial::class)->name('crear-material');
-Route::get('administrador/parametros/materiales/editar-material/{id}', App\Livewire\Administrador\Parametros\Materiales\EditarMaterial::class)->name('editar-material');
+    Route::get('administrador/dashboard', App\Livewire\Administrador\Dashboard::class)->name('administrador.dashboard');
 
+    /*rutas para las tallas*/
+    Route::get('administrador/parametros/tallas/show-tallas', App\Livewire\Administrador\Parametros\Tallas\ShowTallas::class)->name('show-tallas');
+    Route::get('administrador/parametros/tallas/crear-talla', App\Livewire\Administrador\Parametros\Tallas\CrearTalla::class)->name('crear-talla');
+    Route::get('administrador/parametros/tallas/editar-talla/{id}', App\Livewire\Administrador\Parametros\Tallas\EditarTalla::class)->name('editar-talla');
 
+    /*rutas para las colores*/
+    Route::get('administrador/parametros/colores/show-colores', App\Livewire\Administrador\Parametros\Colores\ShowColores::class)->name('show-colores');
+    Route::get('administrador/parametros/colores/crear-color', App\Livewire\Administrador\Parametros\Colores\CrearColor::class)->name('crear-color');
+    Route::get('administrador/parametros/colores/editar-color/{id}', App\Livewire\Administrador\Parametros\Colores\EditarColor::class)->name('editar-color');
 
+    /*rutas para las materiales*/
+    Route::get('administrador/parametros/materiales/show-material', App\Livewire\Administrador\Parametros\Materiales\ShowMaterial::class)->name('show-material');
+    Route::get('administrador/parametros/materiales/crear-material', App\Livewire\Administrador\Parametros\Materiales\CrearMaterial::class)->name('crear-material');
+    Route::get('administrador/parametros/materiales/editar-material/{id}', App\Livewire\Administrador\Parametros\Materiales\EditarMaterial::class)->name('editar-material');
 
     /*rutas para las categorias*/
     Route::get('administrador/parametros/categorias/show-categorias', App\Livewire\Administrador\Parametros\Categorias\ShowCategorias::class)->name('show-categorias');
@@ -67,7 +71,6 @@ Route::get('administrador/parametros/materiales/editar-material/{id}', App\Livew
     /*ruta tipo usuarios*/
     Route::get('administrador/parametros/usuario/show-usuario', App\Livewire\Administrador\Parametros\Usuario\ShowUsuario::class)->name('show-usuario');
     Route::get('administrador/parametros/usuario/editar-usuario/{id}', App\Livewire\Administrador\Parametros\Usuario\EditarUsuario::class)->name('editar-usuario');
-
 });
 
 /*Rutas de Seguridad*/
@@ -82,5 +85,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('administrador/parametros/seguridad/rol/show-role', App\Livewire\Administrador\Parametros\Seguridad\Rol\ShowRole::class)->name('show-role');
     Route::get('administrador/parametros/seguridad/rol/crear-role', App\Livewire\Administrador\Parametros\Seguridad\Rol\CrearRole::class)->name('crear-role');
     Route::get('administrador/parametros/seguridad/rol/editar-role/{id}', App\Livewire\Administrador\Parametros\Seguridad\Rol\EditarRole::class)->name('editar-role');
-
 });

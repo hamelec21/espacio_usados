@@ -112,6 +112,10 @@
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-300 dark:text-white dark:hover:bg-gray-700">Subcategorias</a>
                         </li>
                         <li>
+                            <a href="{{ route('show-tallas') }}"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-300 dark:text-white dark:hover:bg-gray-700">Tallas</a>
+                        </li>
+                        <li>
                             <a href="{{ route('show-colores') }}"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-300 dark:text-white dark:hover:bg-gray-700">Colores</a>
                         </li>
@@ -119,6 +123,7 @@
                             <a href="{{ route('show-material') }}"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-300 dark:text-white dark:hover:bg-gray-700">Materiales</a>
                         </li>
+
                         <li>
                             <a href="{{ route('show-estado-producto') }}"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-300 dark:text-white dark:hover:bg-gray-700">Estado Producto</a>
