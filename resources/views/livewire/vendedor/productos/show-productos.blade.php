@@ -40,7 +40,7 @@
                         class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-500 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Buscar por Nombre">
                 </div>
-                <a href="{{ route('crear-producto') }}">
+                <a href="{{ route('crear-productos') }}">
                     <button class="btn-agregar ">Crear Nuevo Producto</button>
                 </a>
             </div>
@@ -108,7 +108,7 @@
                                 </p>
                                 <div class="flex mt-4 space-x-3 lg:mt-6">
 
-                                    <a href="{{ route('editar-producto', ['id' => $item->id]) }}"
+                                    <a href="{{ route('editar-productos', ['id' => $item->id]) }}"
                                         class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-500 rounded hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-green-500 dark:hover:bg-green-600">Editar
                                     </a>
 
