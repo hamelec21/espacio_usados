@@ -26,7 +26,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-
 //modificar la ruta
 Route::middleware([
     'auth:sanctum',
@@ -37,7 +36,6 @@ Route::middleware([
         return view('perfil-usuario');
     })->name('perfil-usuario');
 });
-
 
 Route::middleware([
     'auth:sanctum',
