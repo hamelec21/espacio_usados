@@ -80,7 +80,7 @@ class EditarProductos extends Component
         $this->peso = $producto->peso;
         $this->color = $producto->color;
         $this->imperfeccion = $producto->imperfeccion;
-        $this->foto_imperfeccion = $producto->foto_imperfeccion;
+        $this->foto6 = $producto->foto_imperfeccion;
         $this->tiempouso_id = $producto->tiempouso_id;
 
        //marcas
