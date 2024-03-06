@@ -94,7 +94,7 @@
                             </div>
                             <div class="flex flex-col items-center pb-4">
                                 <div class='h-[64px] w-[64px]'
-                                    style="background-image: url('{{ asset('storage/' . $item->foto1) }}'); background-size: cover; background-position: center;">
+                                    style="background-image: url('{{ Storage::url($item->foto1) }}'); background-size: cover; background-position: center;">
                                 </div>
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                                     {{ $item->nombre }}</h5>

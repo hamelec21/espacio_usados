@@ -6,28 +6,28 @@
                 <div class="grid gap-4">
                     <div class="border-gray-300 border shadow-lg">
                         <img id="mainImage" class="h-auto max-w-full rounded-lg"
-                            src="{{ asset('storage/' . $this->producto->foto1) }}" alt="">
+                            src="{{ Storage::url($producto->foto1) }}" alt="">
                     </div>
                     <div class="grid grid-cols-5 gap-4">
                         <div class="border-gray-300 border shadow-lg">
                             <img class="h-auto max-w-full rounded-lg thumbnail"
-                                src="{{ asset('storage/' . $this->producto->foto1) }}" alt="">
+                                src="{{ Storage::url($producto->foto1) }}" alt="">
                         </div>
                         <div class="border-gray-300 border shadow-lg">
                             <img class="h-auto max-w-full rounded-lg thumbnail"
-                                src="{{ asset('storage/' . $this->producto->foto2) }}" alt="">
+                                src="{{ Storage::url($producto->foto2) }}" alt="">
                         </div>
                         <div class="border-gray-300 border shadow-lg">
                             <img class="h-auto max-w-full rounded-lg thumbnail"
-                                src="{{ asset('storage/' . $this->producto->foto3) }}" alt="">
+                                src="{{ Storage::url($producto->foto3) }}" alt="">
                         </div>
                         <div class="border-gray-300 border shadow-lg">
                             <img class="h-auto max-w-full rounded-lg thumbnail"
-                                src="{{ asset('storage/' . $this->producto->foto4) }}" alt="">
+                                src="{{ Storage::url($producto->foto4) }}" alt="">
                         </div>
                         <div class="border-gray-300 border shadow-lg">
                             <img class="h-auto max-w-full rounded-lg thumbnail"
-                                src="{{ asset('storage/' . $this->producto->foto5) }}" alt="">
+                            src="{{ Storage::url($producto->foto5) }}" alt="">
                         </div>
                     </div>
                 </div>

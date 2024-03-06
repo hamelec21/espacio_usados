@@ -47,7 +47,7 @@
                 @foreach ($productos as $producto)
                     <div class="bg-white shadow rounded overflow-hidden group">
                         <div class="relative">
-                            <img src="{{ asset('storage/' . $producto->foto1) }}" alt="{{ $producto->foto1 }}"
+                            <img src="{{ Storage::url($producto->foto1) }}" alt="{{ $producto->foto1 }}"
                                 class="w-full">
                             <div
                                 class="absolute inset-0 bg-black bg-opacity-40 flex items-center

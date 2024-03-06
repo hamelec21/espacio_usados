@@ -36,14 +36,24 @@
 
                             </div>
 
-                            <div class="col-span-1 lg:col-span-2">
+                            <div class="col-span-1 lg:col-span-1">
                                 <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                     Precio</label>
                                 <input wire:model="precio" type="number" id="inputPesos"
                                     placeholder="Ingrese el Ej:12590"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <x-input-error for="precio" />
+                            </div>
+
+                            <div class="col-span-1 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Stock</label>
+                                <input wire:model="cantidad" type="number" id="inputPesos"
+                                    placeholder="Ingrese el Ej:10"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <x-input-error for="cantidad" />
                             </div>
 
                             <div class="col-span-2 lg:col-span-1">
@@ -62,7 +72,7 @@
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="category"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subcategoria</label>
-                                <select wire:model="comunas_id" id="category"
+                                <select wire:model="subcategorias_id" id="category"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
 
                                     @if ($subcategorias->count() == 0)
@@ -101,6 +111,19 @@
                                 <x-input-error for="modelos_id" />
                             </div>
 
+                            {{-- tallas --}}
+                            <div class="col-span-2 lg:col-span-1">
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+                                    Talla</label>
+                                <select wire:model="tallas_id" id="tallas_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected="">_ _ _ _ _ _ _</option>
+                                    @foreach ($tallas as $talla)
+                                        <option value="{{ $talla->id }}">{{ $talla->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error for="tallas_id" />
+                            </div>
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione Tipo
@@ -142,15 +165,29 @@
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+                                    Tipo de uso</label>
+                                <select wire:model="tiempouso_id" type="text" id="tiempouso_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="">Seleccione</option>
+                                    @foreach ($tiempos as $uso)
+                                        <option value="{{ $uso->id }}">{{ $uso->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error for="" />
+                            </div>
+
+                            <div class="col-span-2 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
                                     Tipo de Material</label>
-                                <select wire:model="estado_productos_id" type="text" id="estado_producto"
+                                <select wire:model="material_id" type="text" id="estado_producto"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="">--------</option>
                                     @foreach ($materiales as $material)
                                         <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <x-input-error for="estado_productos_id" />
+                                <x-input-error for="material_id" />
                             </div>
 
                             <div class="col-span-1 lg:col-span-2">
@@ -160,7 +197,7 @@
                                     <div class="col-span-1">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alto</label>
-                                        <input wire:model="alto" type="text" id="alto"placeholder="cm."
+                                        <input wire:model="alto" type="number" id="alto"placeholder="cm."
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -169,7 +206,7 @@
                                     <div class="col-span-1">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ancho</label>
-                                        <input wire:model="ancho" type="text" id="ancho" placeholder="cm."
+                                        <input wire:model="ancho" type="number" id="ancho" placeholder="cm."
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -178,7 +215,7 @@
                                     <div class="">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profundidad</label>
-                                        <input wire:model="Profundidad" type="text" id="ancho"
+                                        <input wire:model="profundidad" type="number" id="ancho"
                                             placeholder="cm."
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="Profundidad" />
@@ -186,7 +223,7 @@
                                     <div class="">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso</label>
-                                        <input wire:model="peso" type="text" id="ancho"placeholder="kg."
+                                        <input wire:model="peso" type="number" id="ancho"placeholder="kg."
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -223,6 +260,36 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-span-2 sm:col-span-2">
+                                <label for="category"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imperfecciones del Producto</label>
+                                    <hr>
+                            </div>
+
+                            {{-- inperfecciones del producto --}}
+                            <div class="flex items-center col-span-2 sm:col-span-1">
+                                <textarea id="message" rows="4"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Describa la imperfección del producto..."></textarea>
+                            </div>
+
+                            <div class="col-span-1">
+
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="file_input">Fotagrafía Imperfección</label>
+                                <input wire:model="foto6"
+                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    id="file_input" type="file">
+                                <x-input-error for="foto6" />
+
+                            </div>
+
+
+
+
+
+
+
 
                             {{-- SECCION DE IMAGNES  --}}
 
@@ -288,4 +355,17 @@
     </div>
 
     <script src="{{ asset('validaciones/validacion_textarea.js') }}"></script>
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.hook('afterDomUpdate', () => {
+                Livewire.on('mostrarContenido', () => {
+                    document.getElementById('cont').style.display = 'block';
+                });
+
+                Livewire.on('ocultarContenido', () => {
+                    document.getElementById('cont').style.display = 'none';
+                });
+            });
+        });
+    </script>
 </div>

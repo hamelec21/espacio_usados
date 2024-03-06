@@ -9,8 +9,11 @@ use App\Models\EstadoProducto;
 use App\Models\Marca;
 use App\Models\Material;
 use App\Models\Modelo;
+use App\Models\ProductoVendedor;
 use App\Models\Region;
 use App\Models\SubCategoria;
+use App\Models\Talla;
+use App\Models\TiempoUso;
 use App\Models\TipoEntrega;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -20,8 +23,10 @@ class CrearProductos extends Component
 {
     use WithFileUploads;
     public $caracteres;
-    public $nombre, $descripcion, $estado_productos_id, $tipo_entregas_id, $marcas_id, $modelos_id,
-        $estado_publicaciones_id, $precio, $foto1, $foto2, $foto3, $foto4, $foto5;
+    public $nombre, $descripcion, $estado_productos_id, $tipo_entregas_id, $marcas_id, $modelos_id, $cantidad,
+        $estado_publicaciones_id, $precio, $foto1, $foto2, $foto3, $foto4, $foto5, $tallas_id, $material_id,
+        $color, $alto, $ancho, $profundidad, $peso, $imperfeccion, $foto6, $tiempouso_id;
+
     //variables para las marcas y modelos
     public $marcas;
     public $modelos = [];
@@ -35,7 +40,6 @@ class CrearProductos extends Component
     public $regiones;
 
     //variables para las carga de categorias y subcategorias
-
     public $subcategorias = [];
     public $categorias_id;
     public $subcategorias_id;
@@ -44,7 +48,7 @@ class CrearProductos extends Component
 
     public function mount()
     {
-        //carga  las marcas
+        //carga las marcas
         $this->marcas = Marca::all();
         $this->modelos = collect();
         //carga las regiones
@@ -52,101 +56,90 @@ class CrearProductos extends Component
         $this->comunas = collect();
 
         //carga las categorias y subcategorias
-
         $this->categorias = Categoria::all();
-        $this->subcategorias= collect();
+        $this->subcategorias = collect();
+
+
+
     }
 
     public function updatedCategoriasId($value)
     {
         $this->subcategorias = SubCategoria::where('categorias_id', $value)->get();
         $this->subcategoria = $this->subcategorias->first()->id ?? null;
+
     }
 
     public function updatedMarcasId($value)
     {
         $this->modelos = Modelo::where('marcas_id', $value)->get();
-        // dd($this->modelos);
         $this->modelo = $this->modelos->first()->id ?? null;
     }
 
     public function updatedRegionesId($value)
     {
         $this->comunas = Comuna::where('regiones_id', $value)->get();
-        // dd($this->comunas);
         $this->comuna = $this->comunas->first()->id ?? null;
     }
+
     public function save()
     {
-        // Generar SKU automáticamente
-        $sku = $this->generarSKU();
-
         // Almacenar las imágenes
-        $path1 = $this->foto1->store('images', 'public');
-        $path2 = $this->foto2->store('images', 'public');
-        $path3 = $this->foto3->store('images', 'public');
-        $path4 = $this->foto4->store('images', 'public');
-        $path5 = $this->foto5->store('images', 'public');
+        $path1 = $this->foto1->store('public/imagen');
+        $path2 = $this->foto2->store('public/imagen');
+        $path3 = $this->foto3->store('public/imagen');
+        $path4 = $this->foto4->store('public/imagen');
+        $path5 = $this->foto5->store('public/imagen');
+        $path6 = $this->foto6->store('public/imagen');
 
         // Crear el producto con los datos proporcionados
-        Producto::create([
+        ProductoVendedor::create([
+
+
+
+            'sku' => 12234, // Asignar el SKU generado
             'nombre' => $this->nombre,
-            'users_id' => auth()->user()->id,
-            'regiones_id' => auth()->user()->regiones_id,
-            'comunas_id' => auth()->user()->comunas_id,
             'descripcion' => $this->descripcion,
             'categorias_id' => $this->categorias_id,
-            'estado_productos_id' => $this->estado_productos_id,
+            'subcategorias_id'=> $this->subcategorias_id,
             'tipo_entregas_id' => $this->tipo_entregas_id,
             'marcas_id' => $this->marcas_id,
             'modelos_id' => $this->modelos_id,
             'estado_publicaciones_id' => 1,
+            'estado_productos_id' => $this->estado_productos_id,
             'precio' => $this->precio,
-            'sku' => $sku, // Asignar el SKU generado
+            'cantidad' => $this->cantidad,
+            'users_id' => auth()->user()->id,
             'foto1' => $path1,
             'foto2' => $path2,
             'foto3' => $path3,
             'foto4' => $path4,
             'foto5' => $path5,
+            'regiones_id' => $this->regiones_id,
+            'comunas_id' => $this->comunas_id,
+            'tallas_id' => $this->tallas_id,
+            'material_id' => $this->material_id,
+            'alto' => $this->alto,
+            'ancho' => $this->ancho,
+            'profundidad' => $this->profundidad,
+            'peso' => $this->peso,
+            'color' => $this->color,
+            'imperfeccion' => $this->imperfeccion,
+            'foto_imperfeccion' => $path6,
+            'tiempouso_id' => $this->tiempouso_id,//error
+
+
         ]);
 
         // Resetear los campos del formulario después de crear el producto
         $this->reset([
             'nombre', 'descripcion', 'categorias_id', 'estado_productos_id',
             'tipo_entregas_id', 'marcas_id', 'modelos_id', 'estado_publicaciones_id',
-            'foto1', 'foto2', 'foto3', 'foto4', 'foto5',
+            'foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'regiones_id', 'comunas_id', 'alto', 'ancho', 'profundidad', 'peso', 'color', 'imperfeccion', 'foto6', 'tiempouso_id'
         ]);
-
-        // Despachar eventos si es necesario
-        $this->dispatch('render');
-        $this->dispatch('insert');
 
         // Redirigir a la ruta deseada después de crear el producto
         return redirect()->route('show-productos');
-    }
-
-    // Función para generar SKU automáticamente
-    public function generarSKU()
-    {
-        // Longitud del SKU deseada
-        $longitud = 8;
-
-        // Caracteres permitidos para el SKU
-        $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-
-        // Generar SKU aleatorio
-        $sku = Str::random($longitud);
-
-        // Verificar si el SKU ya existe en la tabla de productos
-        $sku_existente = Producto::where('sku', $sku)->exists();
-
-        // Si el SKU existe, generar uno nuevo hasta que sea único
-        while ($sku_existente) {
-            $sku = Str::random($longitud);
-            $sku_existente = Producto::where('sku', $sku)->exists();
-        }
-
-        return $sku;
     }
 
     public function cancelar()
@@ -156,10 +149,11 @@ class CrearProductos extends Component
 
     public function render()
     {
-
         $entregas = TipoEntrega::all();
         $estadopros = EstadoProducto::all();
-        $materiales=Material::all();
-        return view('livewire.vendedor.productos.crear-productos', compact('entregas', 'estadopros','materiales'));
+        $materiales = Material::all();
+        $tallas = Talla::all();
+        $tiempos = TiempoUso::all();
+        return view('livewire.vendedor.productos.crear-productos', compact('entregas', 'estadopros', 'materiales', 'tallas', 'tiempos'));
     }
 }

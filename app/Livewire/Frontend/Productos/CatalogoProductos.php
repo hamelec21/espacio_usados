@@ -22,12 +22,6 @@ class CatalogoProductos extends Component
         return redirect()->route('carrito');
     }
 
-
-
-
-
-
-
     public function render()
     {
         $productos = Producto::buscar($this->search) // Suponiendo que tienes una función buscar en el modelo Producto

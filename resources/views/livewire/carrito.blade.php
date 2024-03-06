@@ -15,7 +15,8 @@
                 <!-- Product Information -->
                 <div class="flex flex-row gap-6 items-center">
                     <div class="w-28 h-28">
-                        <img class="w-full h-full" src="{{ asset('storage/' . $item->model->foto1) }}">
+
+                        <img class="w-full h-full" src="{{ Storage::url($item->model->foto1) }}">
                     </div>
                     <div class="flex flex-col gap-1">
                         <p class="text-lg text-gray-800 font-semibold">{{ $item->model->nombre }}</p>
