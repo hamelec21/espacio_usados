@@ -20,7 +20,8 @@ class CrearCategoria extends Component
             'foto' => 'required',
         ]);
         Categoria::create([
-            $path = $this->foto->store('categorias', 'public'),
+
+            $path = $this->foto->store('public/categorias'),
             'nombre' => $this->nombre,
             'foto' => $path,
         ]);

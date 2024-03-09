@@ -58,7 +58,7 @@
                                             </td>
                                             <td class="py-3 px-6 text-left whitespace-nowrap">
                                                 <div class='h-[64px] w-[64px]'
-                                                style="background-image: url('{{ asset('storage/' . $categoria->foto) }}'); background-size: cover; background-position: center;">
+                                                style="background-image: url('{{ Storage::url($categoria->foto) }}'); background-size: cover; background-position: center;">
                                             </div>
                                             </td>
                                             <td class="py-3 px-6 text-left">

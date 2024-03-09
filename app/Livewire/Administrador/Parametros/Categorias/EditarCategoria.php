@@ -44,7 +44,8 @@ class EditarCategoria extends Component
                 // Elimina la imagen actual
                 Storage::delete($categoria->foto);
                 // Almacena la nueva imagen
-                $categoria->foto = $this->foto->store('categorias', 'public');
+                $categoria->foto = $this->foto->store('public/categorias');
+
             }
         }
         $categoria->save();

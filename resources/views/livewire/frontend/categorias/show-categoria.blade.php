@@ -6,8 +6,9 @@
             <div class="bg-gray-200 flex justify-center items-center shadow-lg relative">
                 <a href="#">
                     <div class="hover:scale-75 ease-in duration-500">
-                        <img src="{{ asset('storage/' . $categoria->foto) }}" alt="Imagen de Categoría" class="object-cover">
+                        <img src="{{ Storage::url($categoria->foto) }}" class=" object-cover">
                         <div class="text-center bg-sky-600 text-white">{{ $categoria->nombre }}</div>
+
                     </div>
                 </a>
             </div>
