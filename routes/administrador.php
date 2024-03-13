@@ -61,7 +61,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /*ruta modelos*/
     Route::get('administrador/parametros/modelos/show-modelos', App\Livewire\Administrador\Parametros\Modelos\ShowModelos::class)->name('show-modelos');
     Route::get('administrador/parametros/modelos/crear-modelo', App\Livewire\Administrador\Parametros\Modelos\CrearModelo::class)->name('crear-modelo');
-    Route::get('administrador/parametros/modelos/editar-modelo', App\Livewire\Administrador\Parametros\Modelos\EditarModelo::class)->name('editar-modelo');
+    Route::get('administrador/parametros/modelos/editar-modelo/{id}', App\Livewire\Administrador\Parametros\Modelos\EditarModelo::class)->name('editar-modelo');
 
     /*ruta tipo entregas*/
     Route::get('administrador/parametros/tipoentrega/show-tipo-entregas', App\Livewire\Administrador\Parametros\Tipoentrega\ShowTipoEntregas::class)->name('show-tipo-entregas');
