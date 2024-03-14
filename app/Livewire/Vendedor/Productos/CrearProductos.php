@@ -95,8 +95,6 @@ class CrearProductos extends Component
         // Crear el producto con los datos proporcionados
         ProductoVendedor::create([
 
-
-
             'sku' => 12234, // Asignar el SKU generado
             'nombre' => $this->nombre,
             'descripcion' => $this->descripcion,

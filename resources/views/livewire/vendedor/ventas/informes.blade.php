@@ -24,8 +24,10 @@
                     </a>
                 </div>
                 <div class="text-center mb-2 font-semibold">
+                    <a href="{{ route('crear-productos') }}">
                     <button class="bg-sky-600 hover:bg-sky-500 px-10 text-white py-1 rounded-lg">Publicar
                         Productos</button>
+                    </a>
                 </div>
             </div>
 
