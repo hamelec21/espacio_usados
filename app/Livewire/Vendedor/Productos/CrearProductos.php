@@ -43,7 +43,8 @@ class CrearProductos extends Component
     public $categorias;
 
     //nuevas variables
-         public $nuevaMarca;
+    public $nuevaMarca;
+    public $nuevoMaterial;
 
 
     public function mount()
@@ -56,25 +57,34 @@ class CrearProductos extends Component
         //carga las categorias y subcategorias
         $this->categorias = Categoria::all();
         $this->subcategorias = collect();
-
     }
 
     public function guardarMarca()
-    {}
+    {
+    }
 
     public function save()
     {
+
+
+        //MARCAS
+        
         // Verificar si la marca ya existe en la base de datos
         $marcaExistente = Marca::where('nombre', $this->nuevaMarca)->first();
-         // Obtener el ID de la marca existente o crear una nueva marca
+        // Obtener el ID de la marca existente o crear una nueva marca
         $marcaId = $marcaExistente ? $marcaExistente->id : Marca::create(['nombre' => $this->nuevaMarca])->id;
         // Limpiar el campo de entrada
         $this->nuevaMarca = '';
 
+        //TIPO DE MATERIAL
+        // Verificar si la marca ya existe en la base de datos
+        $materialExistente = Material::where('nombre', $this->nuevoMaterial)->first();
+        // Obtener el ID de la marca existente o crear una nueva marca
+        $materialId = $materialExistente ? $materialExistente->id : Material::create(['nombre' => $this->nuevoMaterial])->id;
+        // Limpiar el campo de entrada
+        $this->nuevoMaterial = '';
 
 
-
-        
 
         // Almacenar las imágenes
         $path1 = $this->foto1->store('public/imagen');
@@ -104,7 +114,7 @@ class CrearProductos extends Component
             'regiones_id' => $this->regiones_id,
             'comunas_id' => $this->comunas_id,
             'tallas_id' => $this->tallas_id,
-            'material_id' => $this->material_id,
+            'material_id' => $materialId,
             'alto' => $this->alto,
             'ancho' => $this->ancho,
             'profundidad' => $this->profundidad,
@@ -116,7 +126,7 @@ class CrearProductos extends Component
         $this->reset([
             'nombre', 'descripcion', 'categorias_id', 'estado_productos_id',
             'marca',  'estado_publicaciones_id',
-            'foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'regiones_id', 'comunas_id', 'alto', 'ancho', 'profundidad', 'peso','tiempouso_id'
+            'foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'regiones_id', 'comunas_id', 'alto', 'ancho', 'profundidad', 'peso', 'tiempouso_id'
         ]);
 
         // Redirigir a la ruta deseada después de crear el producto

@@ -102,8 +102,7 @@
                             </div>
 
                             <div>
-                              
-                                <label for="marca-choice">Choose a brand:</label>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marcas</label>
                                 <input list="marca-list" id="marca-choice" name="marca-choice" wire:model="nuevaMarca"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
                                 <datalist id="marca-list">
@@ -141,20 +140,17 @@
                                 <x-input-error for="" />
                             </div>
 
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Tipo de Material</label>
-                                <select wire:model="material_id" type="text" id="estado_producto"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">Seleccione</option>
-                                    @foreach ($materiales as $material)
-                                        <option value="{{ $material->id }}">{{ $material->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="material_id" />
-                            </div>
 
+                            <div>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
+                                <input list="material-list" id="material-choice" name="material-choice" wire:model="nuevoMaterial"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
+                                <datalist id="material-list">
+                                    @foreach ($materiales as $material)
+                                    <option value="{{ $material->nombre }}" data-id="{{ $material->id }}"></option>
+                                    @endforeach
+                                </datalist>
+                            </div>
 
                             <div class="col-span-1 lg:col-span-2">
                                 {{-- medidas --}}
