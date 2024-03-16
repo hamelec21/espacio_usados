@@ -15,7 +15,20 @@
 
                     <form wire:submit="save">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 justify-between">
-                            <div class="col-span-2">
+                            <div class="col-span-2 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado Del
+                                    Producto</label>
+                                <select wire:model="estado_productos_id" type="text" id="estado_producto"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="">Seleccione</option>
+                                    @foreach ($estadopros as $estado)
+                                        <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error for="estado_productos_id" />
+                            </div>
+                            <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
                                     Producto</label>
@@ -35,6 +48,18 @@
                                 <x-input-error for="descripcion" />
 
                             </div>
+                            <div class="col-span-1 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Stock
+                                </label>
+                                <input wire:model="cantidad" type="number" id="inputPesos"
+                                    placeholder="Ingrese el Ej:10"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    min="1">
+                                <x-input-error for="cantidad" />
+                            </div>
+
 
                             <div class="col-span-1 lg:col-span-1">
                                 <label for="message"
@@ -46,15 +71,7 @@
                                 <x-input-error for="precio" />
                             </div>
 
-                            <div class="col-span-1 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Stock</label>
-                                <input wire:model="cantidad" type="number" id="inputPesos"
-                                    placeholder="Ingrese el Ej:10"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <x-input-error for="cantidad" />
-                            </div>
+
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
@@ -84,31 +101,16 @@
                                 </select>
                             </div>
 
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="marcas"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Marca</label>
-                                <select wire:model.live="marcas_id" id="marcas"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">_ _ _ _ _ _ _</option>
-                                    @foreach ($marcas as $marca)
-                                        <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                            <div>
+                              
+                                <label for="marca-choice">Choose a brand:</label>
+                                <input list="marca-list" id="marca-choice" name="marca-choice" wire:model="nuevaMarca"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
+                                <datalist id="marca-list">
+                                    @foreach($marcas as $marca)
+                                    <option value="{{ $marca->nombre }}" data-id="{{ $marca->id }}"></option>
                                     @endforeach
-                                </select>
-                                <x-input-error for="marcas_id" />
-
-                            </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Modelo</label>
-                                <select wire:model="modelos_id" id="modelos_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">_ _ _ _ _ _ _</option>
-                                    @foreach ($modelos as $modelo)
-                                        <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="modelos_id" />
+                                </datalist>
                             </div>
 
                             {{-- tallas --}}
@@ -124,48 +126,11 @@
                                 </select>
                                 <x-input-error for="tallas_id" />
                             </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione Tipo
-                                    Entrega</label>
-                                <select wire:model="tipo_entregas_id" type="text" id="tipo_entrega_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
-                                    @foreach ($entregas as $entrega)
-                                        <option value="{{ $entrega->id }}">{{ $entrega->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="tipo_entregas_id" />
-                            </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Estado
-                                    Producto</label>
-                                <select wire:model="estado_productos_id" type="text" id="estado_producto"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
-                                    @foreach ($estadopros as $estado)
-                                        <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="estado_productos_id" />
-                            </div>
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Color</label>
-                                <input wire:model="color" type="color" id="nombre"
-                                    class=" h-11 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <x-input-error for="nombre" />
-
-                            </div>
-
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Tipo de uso</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Tiempo de uso</label>
                                 <select wire:model="tiempouso_id" type="text" id="tiempouso_id"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="">Seleccione</option>
@@ -178,17 +143,18 @@
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                     Tipo de Material</label>
                                 <select wire:model="material_id" type="text" id="estado_producto"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
+                                    <option value="">Seleccione</option>
                                     @foreach ($materiales as $material)
                                         <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                                     @endforeach
                                 </select>
                                 <x-input-error for="material_id" />
                             </div>
+
 
                             <div class="col-span-1 lg:col-span-2">
                                 {{-- medidas --}}
@@ -198,6 +164,7 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alto</label>
                                         <input wire:model="alto" type="number" id="alto"placeholder="cm."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -207,6 +174,7 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ancho</label>
                                         <input wire:model="ancho" type="number" id="ancho" placeholder="cm."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -216,7 +184,7 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profundidad</label>
                                         <input wire:model="profundidad" type="number" id="ancho"
-                                            placeholder="cm."
+                                            placeholder="cm." min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="Profundidad" />
                                     </div>
@@ -224,12 +192,11 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso</label>
                                         <input wire:model="peso" type="number" id="ancho"placeholder="kg."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -262,34 +229,12 @@
                             </div>
                             <div class="col-span-2 sm:col-span-2">
                                 <label for="category"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imperfecciones del Producto</label>
-                                    <hr>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imperfecciones
+                                    del Producto</label>
+                                <hr>
                             </div>
 
                             {{-- inperfecciones del producto --}}
-                            <div class="flex items-center col-span-2 sm:col-span-1">
-                                <textarea id="message" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Describa la imperfección del producto..."></textarea>
-                            </div>
-
-                            <div class="col-span-1">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotagrafía Imperfección</label>
-                                <input wire:model="foto6"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto6" />
-
-                            </div>
-
-
-
-
-
-
-
 
                             {{-- SECCION DE IMAGNES  --}}
 
@@ -339,6 +284,9 @@
                                     id="file_input" type="file">
                                 <x-input-error for="foto5" />
                             </div>
+
+
+
 
                         </div>
                         <div class="flex justify-center mt-10 mb-5">

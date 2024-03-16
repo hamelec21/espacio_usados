@@ -17,9 +17,7 @@ class ProductoVendedor extends Model
         'categorias_id',
         'subcategorias_id',
         'estado_productos_id',
-        'tipo_entregas_id',
         'marcas_id',
-        'modelos_id',
         'estado_publicaciones_id',
         'precio',
         'foto1',
@@ -36,11 +34,7 @@ class ProductoVendedor extends Model
         'ancho',
         'profundidad',
         'peso',
-        'color',
-        'imperfeccion',
-        'foto_imperfeccion',
         'tiempouso_id',
-
     ];
 
 
