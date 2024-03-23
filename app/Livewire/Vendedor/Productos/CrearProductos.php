@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Vendedor\Productos;
 
+use App\Livewire\Administrador\Parametros\Subcategoria\ShowSubcategorias;
 use App\Livewire\Frontend\Productos\Producto;
 use App\Models\Categoria;
 use App\Models\Comuna;
@@ -13,8 +14,10 @@ use App\Models\Region;
 use App\Models\SubCategoria;
 use App\Models\Talla;
 use App\Models\TiempoUso;
+use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
+use League\Flysystem\UrlGeneration\TemporaryUrlGenerator;
 use Livewire\Component;
 
 class CrearProductos extends Component
@@ -25,9 +28,10 @@ class CrearProductos extends Component
         $estado_publicaciones_id, $precio, $foto1, $foto2, $foto3, $foto4, $foto5, $tallas_id, $material_id,
         $alto, $ancho, $profundidad, $peso, $tiempouso_id;
 
-    //variables para las marcas y modelos
+    //variables para las marcas
     public $marcas;
     public $images = [];
+
     //variables para las regiones y comunas
     public $comunas = [];
     public $regiones_id;
@@ -46,7 +50,6 @@ class CrearProductos extends Component
     public $nuevaMarca;
     public $nuevoMaterial;
 
-
     public function mount()
     {
         //carga las marcas
@@ -58,17 +61,13 @@ class CrearProductos extends Component
         $this->categorias = Categoria::all();
         $this->subcategorias = collect();
     }
-
-    public function guardarMarca()
+    public function removeImage($index)
     {
+        unset($this->images[$index]);
     }
-
     public function save()
     {
-
-
         //MARCAS
-        
         // Verificar si la marca ya existe en la base de datos
         $marcaExistente = Marca::where('nombre', $this->nuevaMarca)->first();
         // Obtener el ID de la marca existente o crear una nueva marca
@@ -83,15 +82,16 @@ class CrearProductos extends Component
         $materialId = $materialExistente ? $materialExistente->id : Material::create(['nombre' => $this->nuevoMaterial])->id;
         // Limpiar el campo de entrada
         $this->nuevoMaterial = '';
+        // Verificar que no se carguen más de 5 imágenes
+        if (count($this->images) > 5) {
+            $this->addError('images', 'No puedes cargar más de 5 imágenes.');
+            return;
+        }
 
-
-
-        // Almacenar las imágenes
-        $path1 = $this->foto1->store('public/imagen');
-        $path2 = $this->foto2->store('public/imagen');
-        $path3 = $this->foto3->store('public/imagen');
-        $path4 = $this->foto4->store('public/imagen');
-        $path5 = $this->foto5->store('public/imagen');
+        $photoPaths = [];
+        foreach ($this->images as $image) {
+            $photoPaths[] = $image->store('public/images');
+        }
 
         // Crear el producto con los datos proporcionados
         ProductoVendedor::create([
@@ -106,11 +106,11 @@ class CrearProductos extends Component
             'precio' => $this->precio,
             'cantidad' => $this->cantidad,
             'users_id' => auth()->user()->id,
-            'foto1' => $path1,
-            'foto2' => $path2,
-            'foto3' => $path3,
-            'foto4' => $path4,
-            'foto5' => $path5,
+            'foto1' => $photoPaths[0] ?? null,
+            'foto2' => $photoPaths[1] ?? null,
+            'foto3' => $photoPaths[2] ?? null,
+            'foto4' => $photoPaths[3] ?? null,
+            'foto5' => $photoPaths[4] ?? null,
             'regiones_id' => $this->regiones_id,
             'comunas_id' => $this->comunas_id,
             'tallas_id' => $this->tallas_id,
@@ -133,14 +133,11 @@ class CrearProductos extends Component
         return redirect()->route('show-productos');
     }
 
-
     public function updatedCategoriasId($value)
     {
         $this->subcategorias = SubCategoria::where('categorias_id', $value)->get();
         $this->subcategoria = $this->subcategorias->first()->id ?? null;
     }
-
-
 
     public function updatedRegionesId($value)
     {
@@ -148,20 +145,15 @@ class CrearProductos extends Component
         $this->comunas = Comuna::where('regiones_id', $value)->orderBy('nombre', 'asc')->get();
         $this->comuna = $this->comunas->first()->id ?? null;
     }
-
-
-
     public function cancelar()
     {
         return redirect()->route('show-productos');
     }
-
     public function render()
     {
-
         $estadopros = EstadoProducto::all();
         $materiales = Material::all();
-        $tallas = Talla::all();
+            $tallas = Talla::where('subcategorias_id', $this->subcategoria)->get();
         $tiempos = TiempoUso::all();
         return view('livewire.vendedor.productos.crear-productos', compact('estadopros', 'materiales', 'tallas', 'tiempos'));
     }

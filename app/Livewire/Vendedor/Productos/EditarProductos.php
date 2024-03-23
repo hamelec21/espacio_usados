@@ -30,8 +30,7 @@ class EditarProductos extends Component
 
     //variables para las marcas y modelos
     public $marcas;
-    public $modelos = [];
-    public $modelo;
+
     public $images = [];
     //variables para las regiones y comunas
     public $comunas = [];
@@ -60,9 +59,7 @@ class EditarProductos extends Component
         $this->categorias_id = $producto->categorias_id;
         $this->subcategorias_id = $producto->subcategorias_id;
         $this->estado_productos_id = $producto->estado_productos_id;
-        $this->tipo_entregas_id = $producto->tipo_entregas_id;
         $this->marcas_id = $producto->marcas_id;
-        $this->modelos_id = $producto->modelos_id;
         $this->estado_publicaciones_id = $producto->estado_publicaciones_id;
         $this->precio = $producto->precio;
         $this->foto1 = $producto->foto1;
@@ -78,28 +75,21 @@ class EditarProductos extends Component
         $this->ancho = $producto->ancho;
         $this->profundidad = $producto->profundidad;
         $this->peso = $producto->peso;
-        $this->color = $producto->color;
-        $this->imperfeccion = $producto->imperfeccion;
-        $this->foto6 = $producto->foto_imperfeccion;
         $this->tiempouso_id = $producto->tiempouso_id;
 
-       //marcas
+        //marcas
         $this->marcas = Marca::all();
-        $this->modelos = Modelo::where('marcas_id', $this->marcas_id)->get();
+
         //carga las regiones
         $this->regiones = Region::all();
-        $this->comunas = Comuna::where('regiones_id',$this->regiones_id)->get();
+        $this->comunas = Comuna::where('regiones_id', $this->regiones_id)->get();
 
         //carga las categorias y subcategorias
         $this->categorias = Categoria::all();
-        $this->subcategorias =SubCategoria::where('categorias_id',$this->categorias_id)->get();
+        $this->subcategorias = SubCategoria::where('categorias_id', $this->categorias_id)->get();
     }
 
 
-    public function updatedMarcasId($value)
-    {
-        $this->modelos = Modelo::where('marcas_id', $value)->get();
-    }
 
     public function updatedCategoriasId($value)
     {
@@ -108,7 +98,7 @@ class EditarProductos extends Component
     }
     public function updatedRegionesId($value)
     {
-        $this->comunas = Comuna::where('regiones_id', $value)->get();
+        $this->comunas = Comuna::where('regiones_id', $value)->orderBy('nombre', 'asc')->get();
         $this->comuna = $this->comunas->first()->id ?? null;
     }
 
@@ -124,7 +114,7 @@ class EditarProductos extends Component
         $producto->categorias_id = $this->categorias_id;
         $producto->subcategorias_id = $this->subcategorias_id;
         $producto->estado_productos_id = $this->estado_productos_id;
-        $producto->tipo_entregas_id = $this->tipo_entregas_id;
+
         $producto->marcas_id = $this->marcas_id;
         $producto->modelos_id = $this->modelos_id;
         $producto->estado_publicaciones_id = $this->estado_publicaciones_id;
@@ -200,7 +190,7 @@ class EditarProductos extends Component
         $producto->profundidad = $this->profundidad;
         $producto->peso = $this->peso;
         $producto->color = $this->color;
-        $producto->imperfeccion = $this->imperfeccion;
+
         $producto->tiempouso_id = $this->tiempouso_id;
         $producto->save();
         $this->dispatch('editar');
@@ -220,6 +210,6 @@ class EditarProductos extends Component
         $materiales = Material::all();
         $tallas = Talla::all();
         $tiempos = TiempoUso::all();
-        return view('livewire.vendedor.productos.editar-productos', compact( 'entregas', 'estadopros', 'materiales', 'tallas', 'tiempos'));
+        return view('livewire.vendedor.productos.editar-productos', compact('estadopros', 'materiales', 'tallas', 'tiempos'));
     }
 }

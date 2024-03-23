@@ -13,9 +13,23 @@
             <div class="container mx-auto px-4 mb-10">
                 <div class="container mx-auto dark:bg-gray-900 border-gray-200 border px-4 bg-white shadow-lg">
 
-                    <form wire:submit="editar">
+                    <form wire:submit="save" enctype="multipart/form-data">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 justify-between">
-                            <div class="col-span-2">
+                            <input type="hidden" wire:model="productoId">
+                            <div class="col-span-2 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado Del
+                                    Producto</label>
+                                <select wire:model="estado_productos_id" type="text" id="estado_producto"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="">Seleccione</option>
+                                    @foreach ($estadopros as $estado)
+                                        <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error for="estado_productos_id" />
+                            </div>
+                            <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
                                     Producto</label>
@@ -35,6 +49,18 @@
                                 <x-input-error for="descripcion" />
 
                             </div>
+                            <div class="col-span-1 lg:col-span-1">
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Stock
+                                </label>
+                                <input wire:model="cantidad" type="number" id="inputPesos"
+                                    placeholder="Ingrese el Ej:10"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    min="1">
+                                <x-input-error for="cantidad" />
+                            </div>
+
 
                             <div class="col-span-1 lg:col-span-1">
                                 <label for="message"
@@ -46,15 +72,7 @@
                                 <x-input-error for="precio" />
                             </div>
 
-                            <div class="col-span-1 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                    Stock</label>
-                                <input wire:model="cantidad" type="number" id="inputPesos"
-                                    placeholder="Ingrese el Ej:10"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <x-input-error for="cantidad" />
-                            </div>
+
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
@@ -74,6 +92,10 @@
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subcategoria</label>
                                 <select wire:model="subcategorias_id" id="category"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+
+                                    @if ($subcategorias->count() == 0)
+                                        <option selected="">Seleccione una Categoria Antes</option>
+                                    @endif
                                     @foreach ($subcategorias as $sub)
                                         <option value="{{ $sub->id }}">{{ $sub->nombre }}</option>
                                     @endforeach
@@ -81,30 +103,15 @@
                             </div>
 
                             <div class="col-span-2 lg:col-span-1">
-                                <label for="marcas"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Marca</label>
-                                <select wire:model.live="marcas_id" id="marcas"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">_ _ _ _ _ _ _</option>
+                                <label
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marcas</label>
+                                <select wire:model="marcas_id" id="marca-list"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     @foreach ($marcas as $marca)
                                         <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <x-input-error for="marcas_id" />
 
-                            </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Modelo</label>
-                                <select wire:model="modelos_id" id="modelos_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">_ _ _ _ _ _ _</option>
-                                    @foreach ($modelos as $modelo)
-                                        <option value="{{ $modelo->id }}">{{ $modelo->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="modelos_id" />
                             </div>
 
                             {{-- tallas --}}
@@ -120,48 +127,11 @@
                                 </select>
                                 <x-input-error for="tallas_id" />
                             </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione Tipo
-                                    Entrega</label>
-                                <select wire:model="tipo_entregas_id" type="text" id="tipo_entrega_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
-                                    @foreach ($entregas as $entrega)
-                                        <option value="{{ $entrega->id }}">{{ $entrega->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="tipo_entregas_id" />
-                            </div>
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Estado
-                                    Producto</label>
-                                <select wire:model="estado_productos_id" type="text" id="estado_producto"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
-                                    @foreach ($estadopros as $estado)
-                                        <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="estado_productos_id" />
-                            </div>
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Color</label>
-                                <input wire:model="color" type="color" id="nombre"
-                                    class=" h-11 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <x-input-error for="nombre" />
-
-                            </div>
-
-                            <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Tipo de uso</label>
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Tiempo de uso</label>
                                 <select wire:model="tiempouso_id" type="text" id="tiempouso_id"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="">Seleccione</option>
@@ -172,28 +142,27 @@
                                 <x-input-error for="" />
                             </div>
 
+
                             <div class="col-span-2 lg:col-span-1">
-                                <label for="message"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Tipo de Material</label>
-                                <select wire:model="material_id" type="text" id="estado_producto"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">--------</option>
+                                <label
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
+                                <select wire:model="material_id" id="marca-list"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                     @foreach ($materiales as $material)
                                         <option value="{{ $material->id }}">{{ $material->nombre }}</option>
                                     @endforeach
                                 </select>
-                                <x-input-error for="material_id" />
                             </div>
 
                             <div class="col-span-1 lg:col-span-2">
                                 {{-- medidas --}}
                                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
-                                    <div class="col-span-1">
+                                    <div class="col-span-1 lg:col-span-1">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alto</label>
                                         <input wire:model="alto" type="number" id="alto"placeholder="cm."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -203,6 +172,7 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ancho</label>
                                         <input wire:model="ancho" type="number" id="ancho" placeholder="cm."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
@@ -212,7 +182,7 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profundidad</label>
                                         <input wire:model="profundidad" type="number" id="ancho"
-                                            placeholder="cm."
+                                            placeholder="cm." min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="Profundidad" />
                                     </div>
@@ -220,12 +190,11 @@
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso</label>
                                         <input wire:model="peso" type="number" id="ancho"placeholder="kg."
+                                            min="0"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <x-input-error for="nombre" />
 
                                     </div>
-
-
                                 </div>
                             </div>
 
@@ -242,7 +211,6 @@
                                 </select>
                             </div>
 
-
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="category"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ciudad</label>
@@ -256,84 +224,37 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-span-2 sm:col-span-2">
-                                <label for="category"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imperfecciones del Producto</label>
-                                    <hr>
-                            </div>
-
-                            {{-- inperfecciones del producto --}}
-                            <div class="flex items-center col-span-2 sm:col-span-1">
-                                <textarea id="message" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Describa la imperfección del producto..."></textarea>
-                            </div>
-
-                            <div class="col-span-1">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotagrafía Imperfección</label>
-                                <input wire:model="foto6"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto6" />
-
-                            </div>
-
-
-
-
-
-
-
 
                             {{-- SECCION DE IMAGNES  --}}
 
-                            <div class="col-span-2">
+                            <div class="border border-gray-500 border-dashed mt-5 mb-5 col-span-2 p-5">
+                                <label for="images">Imágenes:</label>
+                                <input type="file" wire:model="images" id="images" multiple accept="image/*"
+                                    {{ count($images) >= 5 ? 'disabled' : '' }}>
+                                @if ($images)
+                                    <div class="mt-2 px-4">
+                                        <label>Previsualización:</label>
+                                        <div wire:loading wire:target="images">Cargando...</div>
+                                        <div class="grid grid-col-1 lg:grid-cols-5 gap-4 mb-10">
+                                            @foreach ($images as $key => $image)
+                                                <div class="w-full border border-gray-500 px-4">
+                                                    <img src="{{ $image->temporaryUrl() }}"
+                                                        alt="{{ $image->getClientOriginalName() }}"
+                                                        class="mx-auto w-24 h-24">
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografia Portada</label>
-                                <input wire:model="foto1"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto1" />
-                            </div>
-                            <div class="col-span-2">
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 1</label>
-                                <input wire:model="foto2"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto2" />
-                            </div>
-                            <div class="col-span-2">
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 2</label>
-                                <input wire:model="foto3"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto3" />
-                            </div>
-
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 3</label>
-                                <input wire:model="foto4"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto4" />
-                            </div>
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 4</label>
-                                <input wire:model="foto5"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto5" />
+                                @error('images.*')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                                @error('images')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
                             </div>
 
                         </div>
@@ -344,11 +265,17 @@
                         </div>
                     </form>
                 </div>
-
             </div>
-
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('fileUploadError', message => {
+                console.error('Error de carga de archivo:', message);
+            });
+        });
+    </script>
 
     <script src="{{ asset('validaciones/validacion_textarea.js') }}"></script>
     <script>

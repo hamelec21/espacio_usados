@@ -13,7 +13,7 @@
             <div class="container mx-auto px-4 mb-10">
                 <div class="container mx-auto dark:bg-gray-900 border-gray-200 border px-4 bg-white shadow-lg">
 
-                    <form wire:submit="save">
+                    <form wire:submit="save" enctype="multipart/form-data">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 justify-between">
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
@@ -37,6 +37,8 @@
                                 <x-input-error for="nombre" />
 
                             </div>
+
+
 
                             <div class="col-span-2">
                                 <label for="message"
@@ -95,36 +97,41 @@
                                     @if ($subcategorias->count() == 0)
                                         <option selected="">Seleccione una Categoria Antes</option>
                                     @endif
+
                                     @foreach ($subcategorias as $sub)
                                         <option value="{{ $sub->id }}">{{ $sub->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marcas</label>
+                            <div class="col-span-2  lg:col-span-1">
+                                <label
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marcas</label>
                                 <input list="marca-list" id="marca-choice" name="marca-choice" wire:model="nuevaMarca"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
                                 <datalist id="marca-list">
-                                    @foreach($marcas as $marca)
-                                    <option value="{{ $marca->nombre }}" data-id="{{ $marca->id }}"></option>
+                                    @foreach ($marcas as $marca)
+                                        <option value="{{ $marca->nombre }}" data-id="{{ $marca->id }}"></option>
                                     @endforeach
                                 </datalist>
                             </div>
 
                             {{-- tallas --}}
                             <div class="col-span-2 lg:col-span-1">
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Seleccione
-                                    Talla</label>
-                                <select wire:model="tallas_id" id="tallas_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected="">_ _ _ _ _ _ _</option>
-                                    @foreach ($tallas as $talla)
-                                        <option value="{{ $talla->id }}">{{ $talla->nombre }}</option>
-                                    @endforeach
-                                </select>
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Talla</label>
+                                @if($tallas->isNotEmpty())
+                                    <select wire:model="tallas_id" id="tallas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected="">_ _ _ _ _ _ _</option>
+                                        @foreach ($tallas as $talla)
+                                            <option value="{{ $talla->id }}">{{ $talla->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <p class="text-gray-500 dark:text-gray-400">No hay tallas disponibles para esta subcategoría.</p>
+                                @endif
                                 <x-input-error for="tallas_id" />
                             </div>
+
 
                             <div class="col-span-2 lg:col-span-1">
                                 <label for="message"
@@ -141,13 +148,16 @@
                             </div>
 
 
-                            <div>
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
-                                <input list="material-list" id="material-choice" name="material-choice" wire:model="nuevoMaterial"
+                            <div class="col-span-2  lg:col-span-1">
+                                <label
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Material</label>
+                                <input list="material-list" id="material-choice" name="material-choice"
+                                    wire:model="nuevoMaterial"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" />
                                 <datalist id="material-list">
                                     @foreach ($materiales as $material)
-                                    <option value="{{ $material->nombre }}" data-id="{{ $material->id }}"></option>
+                                        <option value="{{ $material->nombre }}" data-id="{{ $material->id }}">
+                                        </option>
                                     @endforeach
                                 </datalist>
                             </div>
@@ -156,7 +166,7 @@
                                 {{-- medidas --}}
                                 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
-                                    <div class="col-span-1">
+                                    <div class="col-span-1 lg:col-span-1">
                                         <label for="message"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alto</label>
                                         <input wire:model="alto" type="number" id="alto"placeholder="cm."
@@ -209,7 +219,6 @@
                                 </select>
                             </div>
 
-
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="category"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ciudad</label>
@@ -223,67 +232,35 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-span-2 sm:col-span-2">
-                                <label for="category"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">imperfecciones
-                                    del Producto</label>
-                                <hr>
-                            </div>
-
-                            {{-- inperfecciones del producto --}}
 
                             {{-- SECCION DE IMAGNES  --}}
 
-                            <div class="col-span-2">
+                            <div class="border border-gray-500 border-dashed mt-5 mb-5 col-span-2 p-5">
+                                <label for="images">Imágenes:</label>
+                                <input type="file" wire:model="images" id="images" multiple accept="image/*"
+                                    {{ count($images) >= 5 ? 'disabled' : '' }}>
+                                @if ($images)
+                                    <div class="mt-2 px-4">
+                                        <label>Previsualización:</label>
+                                        <div wire:loading wire:target="images">Cargando...</div>
+                                        <div class="grid grid-col-1 lg:grid-cols-5 gap-4 mb-10">
+                                            @foreach ($images as $key => $image)
+                                                <div class="w-full border border-gray-500 px-4">
+                                                    <img src="{{ $image->temporaryUrl() }}"
+                                                        alt="{{ $image->getClientOriginalName() }}" class="mx-auto w-24 h-24" >
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografia Portada</label>
-                                <input wire:model="foto1"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto1" />
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                                @error('images.*')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                                @error('images')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
                             </div>
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 1</label>
-                                <input wire:model="foto2"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto2" />
-                            </div>
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 2</label>
-                                <input wire:model="foto3"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto3" />
-                            </div>
-
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 3</label>
-                                <input wire:model="foto4"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto4" />
-                            </div>
-                            <div class="col-span-2">
-
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                    for="file_input">Fotografía 4</label>
-                                <input wire:model="foto5"
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    id="file_input" type="file">
-                                <x-input-error for="foto5" />
-                            </div>
-
-
-
-
                         </div>
                         <div class="flex justify-center mt-10 mb-5">
                             <button type="submit" type="button"class="btn-agregar w-full">Guardar</button>
@@ -292,11 +269,21 @@
                         </div>
                     </form>
                 </div>
-
             </div>
-
         </div>
     </div>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            Livewire.on('fileUploadError', message => {
+                console.error('Error de carga de archivo:', message);
+            });
+        });
+    </script>
+
+
+
+
 
     <script src="{{ asset('validaciones/validacion_textarea.js') }}"></script>
     <script>
