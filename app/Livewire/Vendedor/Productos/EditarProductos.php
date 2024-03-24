@@ -7,8 +7,7 @@ use App\Models\Comuna;
 use App\Models\EstadoProducto;
 use App\Models\Marca;
 use App\Models\Material;
-use App\Models\Modelo;
-use App\Models\Producto;
+use App\Models\ProductoVendedor;
 use App\Models\Region;
 use App\Models\SubCategoria;
 use App\Models\Talla;
@@ -20,24 +19,25 @@ use Illuminate\Support\Facades\Storage;
 
 class EditarProductos extends Component
 {
-
     use WithFileUploads;
+
     public $caracteres;
-    public $productoId;
-    public $nombre, $descripcion, $estado_productos_id, $tipo_entregas_id, $marcas_id, $modelos_id, $cantidad,
+    public $nombre, $descripcion, $estado_productos_id, $marcas_id, $cantidad,
         $estado_publicaciones_id, $precio, $foto1, $foto2, $foto3, $foto4, $foto5, $tallas_id, $material_id,
-        $color, $alto, $ancho, $profundidad, $peso, $imperfeccion, $foto6, $tiempouso_id;
+        $alto, $ancho, $profundidad, $peso, $tiempouso_id;
 
-    //variables para las marcas y modelos
+    //variables para las marcas
     public $marcas;
-
     public $images = [];
+
+
     //variables para las regiones y comunas
     public $comunas = [];
     public $regiones_id;
     public $comunas_id;
     public $comuna;
     public $regiones;
+    public $productoId;
 
     //variables para las carga de categorias y subcategorias
     public $subcategorias = [];
@@ -46,15 +46,15 @@ class EditarProductos extends Component
     public $subcategoria;
     public $categorias;
 
-
     public function mount($id)
     {
-        $producto = Producto::find($id);
+        $producto =  ProductoVendedor::find($id);
         if (!$producto) {
             return redirect()->route('show-productos')->with('error', 'Registro de Comuna no encontrado.');
         }
         $this->productoId = $producto->id;
         $this->nombre = $producto->nombre;
+        $this->cantidad = $producto->cantidad;
         $this->descripcion = $producto->descripcion;
         $this->categorias_id = $producto->categorias_id;
         $this->subcategorias_id = $producto->subcategorias_id;
@@ -76,14 +76,11 @@ class EditarProductos extends Component
         $this->profundidad = $producto->profundidad;
         $this->peso = $producto->peso;
         $this->tiempouso_id = $producto->tiempouso_id;
-
         //marcas
         $this->marcas = Marca::all();
-
         //carga las regiones
         $this->regiones = Region::all();
         $this->comunas = Comuna::where('regiones_id', $this->regiones_id)->get();
-
         //carga las categorias y subcategorias
         $this->categorias = Categoria::all();
         $this->subcategorias = SubCategoria::where('categorias_id', $this->categorias_id)->get();
@@ -104,98 +101,57 @@ class EditarProductos extends Component
 
     public function editar()
     {
-        $producto = Producto::find($this->productoId);
+        $producto = ProductoVendedor::find($this->productoId);
         if (!$producto) {
             return redirect()->route('show-usuario')->with('error', 'Registro de Producto no encontrado.');
         }
-        // Actualizar los atributos del producto
-        $producto->nombre = $this->nombre;
-        $producto->descripcion = $this->descripcion;
-        $producto->categorias_id = $this->categorias_id;
-        $producto->subcategorias_id = $this->subcategorias_id;
-        $producto->estado_productos_id = $this->estado_productos_id;
 
-        $producto->marcas_id = $this->marcas_id;
-        $producto->modelos_id = $this->modelos_id;
-        $producto->estado_publicaciones_id = $this->estado_publicaciones_id;
-        $producto->precio = $this->precio;
-        // Actualizar las imágenes solo si se proporcionan nuevas imágenes
-        if ($this->foto1) {
+        // Verificar que se proporcionen imágenes antes de intentar guardarlas
+        if (count($this->images) > 5) {
+            $this->addError('images', 'No puedes cargar más de 5 imágenes.');
+            return;
+        }
 
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto1 != $producto->foto1) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto1);
-                // Almacena la nueva imagen
-                $producto->foto1 = $this->foto1->store('public/imagen');
+        // Verificar si la imagen actual es diferente de la nueva y actualizar solo las que han cambiado
+        $photoPaths = [];
+        for ($i = 0; $i < count($this->images); $i++) {
+            if ($this->images[$i] !== null) {
+                $photoPaths[] = $this->images[$i]->store('public/producto');
+                $producto["foto" . ($i + 1)] = $photoPaths[$i];
             }
         }
 
-        if ($this->foto2) {
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto2 != $producto->foto2) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto2);
-                // Almacena la nueva imagen
-                $producto->foto2 = $this->foto2->store('public/imagen');
-            }
-        }
+        // Actualizar los demás datos del producto
+        $producto->update([
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+            'cantidad' => $this->cantidad,
+            'categorias_id' => $this->categorias_id,
+            'subcategorias_id' => $this->subcategorias_id,
+            'estado_productos_id' => $this->estado_productos_id,
+            'marcas_id' => $this->marcas_id,
+            'estado_publicaciones_id' => $this->estado_publicaciones_id,
+            'precio' => $this->precio,
+            'regiones_id' => $this->regiones_id,
+            'comunas_id' => $this->comunas_id,
+            'tallas_id' => $this->tallas_id,
+            'material_id' => $this->material_id,
+            'alto' => $this->alto,
+            'ancho' => $this->ancho,
+            'profundidad' => $this->profundidad,
+            'peso' => $this->peso,
+            'tiempouso_id' => $this->tiempouso_id,
+        ]);
 
-        if ($this->foto3) {
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto3 != $producto->foto3) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto3);
-                // Almacena la nueva imagen
-                $producto->foto3 = $this->foto3->store('public/imagen');
-            }
-        }
-
-        if ($this->foto4) {
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto4 != $producto->foto4) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto4);
-                // Almacena la nueva imagen
-                $producto->foto4 = $this->foto4->store('public/imagen');
-            }
-        }
-
-        if ($this->foto5) {
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto5 != $producto->foto5) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto5);
-                // Almacena la nueva imagen
-                $producto->foto5 = $this->foto5->store('public/imagen');
-            }
-        }
-
-        if ($this->foto6) {
-            // Verifica si la imagen actual es diferente de la nueva
-            if ($this->foto6 != $producto->foto_imperfeccion) {
-                // Elimina la imagen actual
-                Storage::delete($producto->foto5);
-                // Almacena la nueva imagen
-                $producto->foto_imperfeccion = $this->foto6->store('public/imagen');
-            }
-        }
-        $producto->precio = $this->precio;
-        $producto->regiones_id = $this->regiones_id;
-        $producto->comunas_id = $this->comunas_id;
-        $producto->tallas_id = $this->tallas_id;
-        $producto->material_id = $this->material_id;
-        $producto->alto = $this->alto;
-        $producto->ancho = $this->ancho;
-        $producto->profundidad = $this->profundidad;
-        $producto->peso = $this->peso;
-        $producto->color = $this->color;
-
-        $producto->tiempouso_id = $this->tiempouso_id;
+        // Guardar los cambios en la base de datos
         $producto->save();
+
         $this->dispatch('editar');
+
         return redirect()->route('show-productos');
     }
+
+
 
     public function cancelar()
     {
@@ -208,7 +164,7 @@ class EditarProductos extends Component
         $entregas = TipoEntrega::all();
         $estadopros = EstadoProducto::all();
         $materiales = Material::all();
-        $tallas = Talla::all();
+        $tallas = Talla::where('subcategorias_id', $this->subcategoria)->get();
         $tiempos = TiempoUso::all();
         return view('livewire.vendedor.productos.editar-productos', compact('estadopros', 'materiales', 'tallas', 'tiempos'));
     }

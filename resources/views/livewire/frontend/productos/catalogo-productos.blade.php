@@ -43,7 +43,7 @@
     <div class="container mx-auto">
         <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6 px-4">Catalogo de Productos</h2>
         @if ($productos->count())
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 px-4">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 px-4">
                 @foreach ($productos as $producto)
                     <div class="bg-white shadow rounded overflow-hidden group">
                         <div class="relative">

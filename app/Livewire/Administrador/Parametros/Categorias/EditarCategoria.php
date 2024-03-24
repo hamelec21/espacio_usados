@@ -36,8 +36,8 @@ class EditarCategoria extends Component
             return redirect()->route('show-categorias')->with('error', 'Registro de Comuna no encontrado.');
         }
         $categoria->nombre = $this->nombre;
-         // Actualizar las imágenes solo si se proporcionan nuevas imágenes
-         if ($this->foto) {
+        // Actualizar las imágenes solo si se proporcionan nuevas imágenes
+        if ($this->foto) {
 
             // Verifica si la imagen actual es diferente de la nueva
             if ($this->foto != $categoria->foto) {
@@ -45,7 +45,6 @@ class EditarCategoria extends Component
                 Storage::delete($categoria->foto);
                 // Almacena la nueva imagen
                 $categoria->foto = $this->foto->store('public/categorias');
-
             }
         }
         $categoria->save();

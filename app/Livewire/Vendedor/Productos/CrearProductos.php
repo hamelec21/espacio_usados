@@ -90,13 +90,14 @@ class CrearProductos extends Component
 
         $photoPaths = [];
         foreach ($this->images as $image) {
-            $photoPaths[] = $image->store('public/images');
+            $photoPaths[] = $image->store('public/producto');
         }
 
         // Crear el producto con los datos proporcionados
         ProductoVendedor::create([
             'sku' => 12234, // Asignar el SKU generado
             'nombre' => $this->nombre,
+            'cantidad' => $this->cantidad,
             'descripcion' => $this->descripcion,
             'categorias_id' => $this->categorias_id,
             'subcategorias_id' => $this->subcategorias_id,
